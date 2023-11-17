@@ -48,10 +48,10 @@ public class PlayerMovement : MonoBehaviour
             if(rollTimer > 0){
                 rollTimer -= Time.fixedDeltaTime;
                 hitCollider.enabled = false;
-                spriteRenderer.color = spriteRenderer.color.WithAlpha(0.5f);
+                //spriteRenderer.color = spriteRenderer.color.WithAlpha(0.5f);
             }else{
                 hitCollider.enabled = true;
-                spriteRenderer.color = spriteRenderer.color.WithAlpha(1f);
+                //spriteRenderer.color = spriteRenderer.color.WithAlpha(1f);
             }
 
             _rigidbody.velocity = _rollDirection * walkSpeed * (rollMultiplier - currentRollMultiplier);
@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
         isRolling = false;
         rollTimer = 0;
         hitCollider.enabled = true;
-        spriteRenderer.color = spriteRenderer.color.WithAlpha(1f);
+        //spriteRenderer.color = spriteRenderer.color.WithAlpha(1f);
     }
 
     public void EnableMovement() {
