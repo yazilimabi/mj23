@@ -11,8 +11,8 @@ TagManager:
   - Player
   - Water
   - UI
-  - 
-  - 
+  - Light
+  - PixelEffects
   - HitCollider
   - Bullet
   - 
@@ -36,7 +36,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - PixelRenderTexture
   m_SortingLayers:
   - name: Default
     uniqueID: 0
