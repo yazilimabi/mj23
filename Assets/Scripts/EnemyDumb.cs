@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyDumb : MonoBehaviour
 {
-    enum State {
+    public enum State {
         Chasing,
         FollowPath
     }
@@ -50,10 +51,9 @@ public class EnemyDumb : MonoBehaviour
         if (path.Length == 0) return;
         if (currentIndex != path.Length) {
             currentTarget = path[currentIndex];
-            Vector2 now = path[currentIndex];
             currentIndex++;
-            Vector2 distance = rb.position - currentTarget;
-            rb.DORotate(rb.rotation - 90, 1f);
+            Vector2 diff = new Vector3(currentTarget.x, currentTarget.y) - transform.position;
+            rb.MoveRotation(Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg);
         } else if (loopForPath) {
             currentIndex = 0;
             NextTarget();
@@ -63,15 +63,18 @@ public class EnemyDumb : MonoBehaviour
     void Update()
     {
         switch (state) {
-            case State.Chasing:
-                Vector2 dir = player.transform.position - gameObject.transform.position;
-                direction = dir.normalized;
+            case State.Chasing: {
+                Vector2 diff = player.transform.position - transform.position;
+                rb.SetRotation(Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg);
+                direction = diff.normalized;
                 break;
-            case State.FollowPath:
+            }
+            case State.FollowPath: {
                 if (Vector2.Distance(transform.position, currentTarget) < 0.1f) {
                     NextTarget();
                 }
                 break;
+            }
         }
     }
 
@@ -86,5 +89,9 @@ public class EnemyDumb : MonoBehaviour
                 break;
         }
 
+    }
+
+    public void ChangeState(State state) {
+        this.state = state;
     }
 }
