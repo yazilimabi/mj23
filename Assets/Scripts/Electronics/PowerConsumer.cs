@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PowerConsumer : MonoBehaviour
 {
-    List<PowerGenerator> generators = new List<PowerGenerator>();
+    [SerializeField] List<PowerGenerator> generators = new List<PowerGenerator>();
     [SerializeField] bool OR_Mode = false;
     [SerializeField] protected bool currentState = false;
     void Start()

@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class Lever : PowerGenerator
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] SpriteRenderer spriteRenderer;
 
     // Update is called once per frame
-    void Update()
-    {
-        
+    public override void UpdateState(){
+        if(state){
+            spriteRenderer.color = Color.green;
+        }else{
+            spriteRenderer.color = Color.red;
+        }
     }
 }
