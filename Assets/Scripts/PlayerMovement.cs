@@ -30,6 +30,9 @@ public class PlayerMovement : MonoBehaviour
 
         if(Input.GetMouseButton(1) && !isRolling){
             _rollDirection = _direction;
+
+            if(_rollDirection == Vector2.zero) return;
+            
             isRolling = true;
             currentRollMultiplier = 0;
             rollTimer = rollInvincibilityTime;
@@ -51,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
                 spriteRenderer.color = spriteRenderer.color.WithAlpha(1f);
             }
 
-            _rigidbody.velocity = _direction * walkSpeed * (rollMultiplier - currentRollMultiplier);
+            _rigidbody.velocity = _rollDirection * walkSpeed * (rollMultiplier - currentRollMultiplier);
             return;
         }
 
