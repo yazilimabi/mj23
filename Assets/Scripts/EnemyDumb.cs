@@ -55,7 +55,7 @@ public class EnemyDumb : MonoBehaviour
             currentTarget = path[currentIndex];
             currentIndex++;
             Vector2 diff = new Vector3(currentTarget.x, currentTarget.y) - transform.position;
-            rb.MoveRotation(Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg);
+            //rb.MoveRotation(Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg);
         } else if (loopForPath) {
             currentIndex = 0;
             NextTarget();
@@ -96,13 +96,13 @@ public class EnemyDumb : MonoBehaviour
     }
     public void UpdateChasing() {
         Vector2 diff = player.transform.position - transform.position;
-        rb.SetRotation(Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg - 90);
+        //rb.SetRotation(Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg - 90);
         direction = diff.normalized;
 
     }
     public void UpdateFollowPath() {
         Vector2 diff = new Vector3(currentTarget.x, currentTarget.y) - transform.position;
-        rb.SetRotation(Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg - 90);
+        //rb.SetRotation(Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg - 90);
         if (Vector2.Distance(transform.position, currentTarget) < 0.1f) {
             NextTarget();
         }

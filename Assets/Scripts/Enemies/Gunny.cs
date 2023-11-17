@@ -16,7 +16,7 @@ public class Gunny : EnemyDumb
 
     public override void Start()
     {
-        shootTimer = shootDelay;
+        shootTimer = 0;
         base.Start();
     }
 
@@ -34,11 +34,13 @@ public class Gunny : EnemyDumb
             case State.Shoot: {
                 Vector2 diff = player.transform.position - transform.position;
                 hand.SetRotation(Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg - 90);
+
+                Debug.Log(diff);
                 if (shootTimer < shootDelay) {
                     shootTimer += Time.deltaTime;
                 } else {
                     shootTimer = 0;
-                    var bullet = Instantiate(bulletPrefab, nozzle.position, transform.rotation);
+                    var bullet = Instantiate(bulletPrefab, nozzle.position, hand.transform.rotation);
                     bullet.GetComponent<Rigidbody2D>().AddForce(nozzle.up * fireForce, ForceMode2D.Impulse);
                 }
                 break;
@@ -69,7 +71,7 @@ public class Gunny : EnemyDumb
     public override void OnPlayerExited() {
         playerDetector.radius /= 2;
         ChangeState(State.FollowPath);
-        shootTimer = shootDelay;
+        shootTimer = 0;
     }
 
     public override void ChangeState(State newState) {
