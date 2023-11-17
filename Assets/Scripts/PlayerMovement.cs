@@ -65,4 +65,17 @@ public class PlayerMovement : MonoBehaviour
 
         hand.transform.rotation = Quaternion.Euler(0,0,aimAngle);
     }
+
+    public void DisableMovement() {
+        ableToWalk = false;
+        isRolling = false;
+        rollTimer = 0;
+        hitCollider.enabled = true;
+        spriteRenderer.color = spriteRenderer.color.WithAlpha(1f);
+    }
+
+    public void EnableMovement() {
+        ableToWalk = true;
+        _rigidbody.velocity = Vector2.zero;
+    }
 }
