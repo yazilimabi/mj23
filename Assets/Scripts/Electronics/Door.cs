@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Door : PowerConsumer
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] Collider2D col;
+    [SerializeField] SpriteRenderer spriteRenderer;
+    public override void TurnOn()
     {
-        
+        col.enabled = false;
+        spriteRenderer.enabled = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void TurnOff()
     {
-        
+        col.enabled = true;
+        spriteRenderer.enabled = true;
     }
 }
