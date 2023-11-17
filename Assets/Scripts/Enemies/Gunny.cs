@@ -5,20 +5,18 @@ using UnityEngine;
 public class Gunny : EnemyDumb
 {
     [SerializeField] float chaseSpeed = 1f;
-    [SerializeField] float chaseTimeBeforeShooting = 10f;
-    [SerializeField] float shootDelay = 3f;
-    [SerializeField] int totalShoots = 2;
+    [SerializeField] float shootDelay = 0.3f;
     [SerializeField] float fireForce = 10f;
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] Transform nozzle;
+    [SerializeField] CircleCollider2D playerDetector;
+    [SerializeField] Rigidbody2D hand;
 
-
-    float chaseTimer = 0;
     float shootTimer = 0;
-    int shootedTimes = 0;
 
     public override void Start()
     {
+        shootTimer = shootDelay;
         base.Start();
     }
 
@@ -27,12 +25,6 @@ public class Gunny : EnemyDumb
         switch (state) {
             case State.Chasing: {
                 UpdateChasing();
-                if (chaseTimer < chaseTimeBeforeShooting) {
-                    chaseTimer += Time.deltaTime;
-                } else {
-                    chaseTimer = 0;
-                    ChangeState(State.Shoot);
-                }
                 break;
             }
             case State.FollowPath: {
@@ -41,20 +33,13 @@ public class Gunny : EnemyDumb
             }
             case State.Shoot: {
                 Vector2 diff = player.transform.position - transform.position;
-                rb.SetRotation(Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg);
+                hand.SetRotation(Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg - 90);
                 if (shootTimer < shootDelay) {
                     shootTimer += Time.deltaTime;
                 } else {
                     shootTimer = 0;
-                    if (shootedTimes < totalShoots) {
-                        shootedTimes++;
-                        var bullet = Instantiate(bulletPrefab, nozzle.position, transform.rotation);
-                        bullet.GetComponent<Rigidbody2D>().AddForce(nozzle.right * fireForce, ForceMode2D.Impulse);
-                        Debug.Log("aaaaa");
-                    } else {
-                        shootedTimes = 0;
-                        ChangeState(State.FollowPath);
-                    }
+                    var bullet = Instantiate(bulletPrefab, nozzle.position, transform.rotation);
+                    bullet.GetComponent<Rigidbody2D>().AddForce(nozzle.up * fireForce, ForceMode2D.Impulse);
                 }
                 break;
             }
@@ -75,6 +60,16 @@ public class Gunny : EnemyDumb
                 break;
         }
 
+    }
+
+    public override void OnPlayerDetected() {
+        playerDetector.radius *= 2;
+        ChangeState(State.Shoot);
+    }
+    public override void OnPlayerExited() {
+        playerDetector.radius /= 2;
+        ChangeState(State.FollowPath);
+        shootTimer = shootDelay;
     }
 
     public override void ChangeState(State newState) {

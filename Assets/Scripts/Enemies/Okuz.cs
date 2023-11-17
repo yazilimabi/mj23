@@ -55,6 +55,6 @@ public class Okuz : EnemyDumb
         Vector2 diff = player.transform.position - transform.position;
         rb.velocity = diff.normalized * runSpeed;
 
-        rb.SetRotation(Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg);
+        rb.SetRotation(Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg - 90);
     }
 }

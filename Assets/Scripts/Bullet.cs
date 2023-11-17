@@ -5,10 +5,12 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     void OnCollisionEnter2D(Collision2D col){
+        if (col.collider.CompareTag("SearchCollider")) return;
         Destroy(gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D col){
+        if (col.CompareTag("SearchCollider")) return;
         if(col.CompareTag("Player")){
             Debug.Log("Hit Player!");
         }else if(col.CompareTag("Lever")){
