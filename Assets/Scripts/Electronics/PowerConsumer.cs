@@ -26,6 +26,8 @@ public class PowerConsumer : MonoBehaviour
         if(tempState != currentState){
             if(tempState) TurnOn();
             else TurnOff();
+
+            currentState = tempState;
         }
     }
 

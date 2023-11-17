@@ -16,6 +16,7 @@ public class PowerGenerator : MonoBehaviour
         if(newState != state){
             state = newState;
             
+            UpdateState();
             UpdateConsumerStates();
         }
     }

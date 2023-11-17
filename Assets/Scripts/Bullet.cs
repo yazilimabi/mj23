@@ -11,9 +11,13 @@ public class Bullet : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col){
         if(col.CompareTag("Player")){
             Debug.Log("Hit Player!");
+        }else if(col.CompareTag("Lever")){
+            col.GetComponent<PowerGenerator>().SetState(!col.GetComponent<PowerGenerator>().state);
+            Debug.Log("Hit Lever!");
         }else{
             Debug.Log("Hit Something!");
         }
+        
         Destroy(gameObject);
     }
 }
