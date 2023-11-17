@@ -22,6 +22,11 @@ public class PowerConsumer : MonoBehaviour
                 tempState = tempState && generator.state;
             }
         }
+
+        if(tempState != currentState){
+            if(tempState) TurnOn();
+            else TurnOff();
+        }
     }
 
     public virtual void TurnOn() {
