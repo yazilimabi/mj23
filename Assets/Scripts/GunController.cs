@@ -13,6 +13,8 @@ public class GunController : MonoBehaviour
     [SerializeField] GameObject bulletPrefab;
     float gunShootTimer = 0f;
     float gunReloadTimer = 0f;
+
+    bool audioTriggered = false;
     
     DOTween shaketween = null;
     void Start(){
@@ -30,6 +32,10 @@ public class GunController : MonoBehaviour
         if(Input.GetMouseButton(0)){
             gunShootTimer-=Time.deltaTime;
 
+            if(!audioTriggered){
+                AudioManager.Instance.triggerAudio(0);
+                audioTriggered = true;
+            }
 
             if(gunShootTimer < 0){
                 Shoot();
@@ -38,11 +44,15 @@ public class GunController : MonoBehaviour
             }
         }else{
             gunShootTimer = gunShootTime;//Mathf.Max(gunReloadTime, gunReloadTimer + Time.deltaTime * 3);
+            if(audioTriggered)
+                AudioManager.Instance.stopAudio(0);
+            audioTriggered = false;
         }
     }
 
     public void Shoot(){
         var bullet = Instantiate(bulletPrefab, nozzle.position, hand.rotation);
         bullet.GetComponent<Rigidbody2D>().AddForce(nozzle.up * fireForce, ForceMode2D.Impulse);
+        audioTriggered = false;
     }
 }
