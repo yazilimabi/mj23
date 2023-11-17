@@ -16,7 +16,7 @@ public class GunController : MonoBehaviour
 
     bool audioTriggered = false;
     
-    DOTween shaketween = null;
+    Tweener shaketween = null;
     void Start(){
         gunShootTimer = gunShootTime;
         gunReloadTimer = gunReloadTime;
@@ -34,6 +34,7 @@ public class GunController : MonoBehaviour
 
             if(!audioTriggered){
                 AudioManager.Instance.triggerAudio(0);
+                shaketween = gun.DOShakePosition(gunShootTime, 0.1f, 100, 90, false, false, ShakeRandomnessMode.Full);
                 audioTriggered = true;
             }
 
@@ -47,6 +48,7 @@ public class GunController : MonoBehaviour
             if(audioTriggered)
                 AudioManager.Instance.stopAudio(0);
             audioTriggered = false;
+            shaketween.Kill();
         }
     }
 

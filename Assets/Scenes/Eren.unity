@@ -450,7 +450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunShootTime: 0.75
-  gunReloadTime: 0.75
+  gunReloadTime: 1.25
   fireForce: 10
   gun: {fileID: 3997192144258782720}
   nozzle: {fileID: 360781611}
