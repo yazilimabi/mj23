@@ -1,37 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
-using DG.Tweening;
-using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyDumb : MonoBehaviour
 {
     public enum State {
         Chasing,
-        FollowPath
+        FollowPath,
+        Shoot,
     }
 
-    [SerializeField] float walkSpeed = 10f;
     [SerializeField] LineRenderer lineRenderer;
-    [SerializeField] State state = State.FollowPath;
     [SerializeField] bool loopForPath = true;
+    [SerializeField] public float speed = 1f;
+    [SerializeField] public State state = State.FollowPath;
 
-    GameObject player;
+    public GameObject player;
+
     Vector2 direction = Vector2.zero;
     Vector2[] path;
     int currentIndex = 0;
     Vector2 currentTarget = Vector2.zero;
-    float nextRotation = 0;
 
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
 
-    void Start()
+    public virtual void Init(LineRenderer line)
     {
-        rb = GetComponent<Rigidbody2D>();
-        path = new Vector2[lineRenderer.positionCount];
+        path = new Vector2[line.positionCount];
         for (int i = 0; i < path.Length; i++) {
-            path[i] = lineRenderer.GetPosition(i);
+            path[i] = line.GetPosition(i);
         }
         NextTarget();
         if (path.Length >= 1) {
@@ -47,6 +44,11 @@ public class EnemyDumb : MonoBehaviour
         }
     }
 
+    public virtual void Start() {
+        rb = GetComponent<Rigidbody2D>();
+        Init(lineRenderer);
+    }
+
     void NextTarget() {
         if (path.Length == 0) return;
         if (currentIndex != path.Length) {
@@ -60,38 +62,52 @@ public class EnemyDumb : MonoBehaviour
         }
     }
 
-    void Update()
+    public virtual void Update()
     {
         switch (state) {
             case State.Chasing: {
-                Vector2 diff = player.transform.position - transform.position;
-                rb.SetRotation(Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg);
-                direction = diff.normalized;
+                UpdateChasing();
                 break;
             }
             case State.FollowPath: {
-                if (Vector2.Distance(transform.position, currentTarget) < 0.1f) {
-                    NextTarget();
-                }
+                UpdateFollowPath();
                 break;
             }
         }
     }
 
-    void FixedUpdate()
+    public virtual void FixedUpdate()
     {
         switch (state) {
            case State.Chasing:
-                rb.velocity = direction * walkSpeed;
+                MoveChasing();
                 break;
             case State.FollowPath:
-                rb.MovePosition(Vector2.MoveTowards(rb.position, currentTarget, walkSpeed * Time.fixedDeltaTime));
+                MoveFollowPath();
                 break;
         }
-
     }
 
-    public void ChangeState(State state) {
-        this.state = state;
+    public void MoveChasing() {
+        rb.velocity = direction * speed;
+    }
+    public void MoveFollowPath() {
+        rb.MovePosition(Vector2.MoveTowards(rb.position, currentTarget, speed * Time.fixedDeltaTime));
+    }
+    public void UpdateChasing() {
+        Vector2 diff = player.transform.position - transform.position;
+        rb.SetRotation(Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg);
+        direction = diff.normalized;
+
+    }
+    public void UpdateFollowPath() {
+        Vector2 diff = new Vector3(currentTarget.x, currentTarget.y) - transform.position;
+        rb.SetRotation(Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg);
+        if (Vector2.Distance(transform.position, currentTarget) < 0.1f) {
+            NextTarget();
+        }
+    }
+    public virtual void ChangeState(State newState) {
+        state = newState;
     }
 }
