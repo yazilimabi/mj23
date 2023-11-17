@@ -16,7 +16,7 @@ public class PlayerRoomController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col) {
         if(col.CompareTag("Room")) {
             var room = col.GetComponent<Room>();
-            room.ActivateRoom();
+            room.ActivateRoom(transform);
             activeRooms.Add(room);
             if(activeRooms.Count > 1){
                 playerMovement.DisableMovement();
