@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Collider2D hitCollider;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Rigidbody2D hand;
+    [SerializeField] Animator animator;
     
     float rollTimer = 0f;
     float currentRollMultiplier = 0f;
@@ -40,6 +41,13 @@ public class PlayerMovement : MonoBehaviour
     }
     
     void FixedUpdate(){
+        animator.SetBool("Walking", _rigidbody.velocity.magnitude > 0.1);
+        if(_rigidbody.velocity.x < -0.1){
+            spriteRenderer.flipX = true;
+        } else if(_rigidbody.velocity.x > 0.1){
+            spriteRenderer.flipX = false;
+        }
+
         if(isInvincible()){
             hitCollider.enabled = false;
             invincibilityTime -= Time.fixedDeltaTime;
