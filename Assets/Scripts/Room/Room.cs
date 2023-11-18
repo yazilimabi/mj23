@@ -20,7 +20,8 @@ public class Room : MonoBehaviour
 
     public void DisableRoom() {
         for (int i = 0; i < transform.childCount; i++){
-            transform.GetChild(i).gameObject.SetActive(false);
+            if(!transform.GetChild(i).GetComponent<Door>())
+                transform.GetChild(i).gameObject.SetActive(false);
         }
     }
 }
