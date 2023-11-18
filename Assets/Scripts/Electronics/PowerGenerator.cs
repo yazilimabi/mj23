@@ -9,6 +9,9 @@ public class PowerGenerator : MonoBehaviour
     public bool state = false;
     void Awake(){
         UpdateState();
+        foreach(PowerConsumer consumer in consumers){
+            consumer.RegisterGenerator(this);
+        }
         UpdateConsumerStates();
     }
 

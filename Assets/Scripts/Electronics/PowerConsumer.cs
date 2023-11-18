@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PowerConsumer : MonoBehaviour
 {
-    [SerializeField] List<PowerGenerator> generators = new List<PowerGenerator>();
+    List<PowerGenerator> generators = new List<PowerGenerator>();
     enum LogicEnum{
         AND,
         OR,
@@ -50,5 +50,9 @@ public class PowerConsumer : MonoBehaviour
     }
     public virtual void TurnOff() {
         throw new NotImplementedException();
+    }
+
+    public void RegisterGenerator(PowerGenerator newGenerator){
+        generators.Add(newGenerator);
     }
 }
