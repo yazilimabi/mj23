@@ -12,7 +12,7 @@ public class VoidDetector : MonoBehaviour
         movement = transform.parent.GetComponent<PlayerMovement>();
     }
     void FixedUpdate(){
-        if(isFalling || movement.isRolling()) return;
+        if(isFalling) return;
 
         bool verdict = true;
         bool reverseVerdict = false;
@@ -29,7 +29,7 @@ public class VoidDetector : MonoBehaviour
             reverseVerdict = reverseVerdict || isHit;
         }
 
-        if(verdict){
+        if(verdict && (!(movement.isRolling() && movement.isInvincible()) || !movement.isRolling())){
             movement.DisableMovement();
             movement.SetInvincibility(2f);
             isFalling = true;

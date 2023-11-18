@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
     }
     
     void FixedUpdate(){
-        if(invincibilityTime > 0){
+        if(isInvincible()){
             hitCollider.enabled = false;
             invincibilityTime -= Time.fixedDeltaTime;
             spriteRenderer.color = Color.gray;
@@ -69,7 +69,6 @@ public class PlayerMovement : MonoBehaviour
     public void DisableMovement(bool continueMoving = false) {
         ableToWalk = false;
         _isRolling = false;
-        hitCollider.enabled = true;
 
         if(!continueMoving) _rigidbody.velocity = Vector2.zero;
     }
@@ -86,5 +85,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void MoveToPos(Vector3 pos){
         transform.position = pos;
+    }
+
+    public bool isInvincible(){
+        return invincibilityTime > 0;
     }
 }
