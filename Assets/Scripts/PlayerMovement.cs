@@ -66,6 +66,10 @@ public class PlayerMovement : MonoBehaviour
         hand.transform.rotation = Quaternion.Euler(0,0,aimAngle);
     }
 
+    public bool Rolling() {
+        return isRolling;
+    }
+
     public void DisableMovement() {
         ableToWalk = false;
         isRolling = false;

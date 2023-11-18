@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &33555474 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5563271345397291952, guid: 1bba21696d32bd846aea929100aa4de1, type: 3}
+  m_PrefabInstance: {fileID: 1109448532}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &114573959
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,12 +143,12 @@ GameObject:
   - component: {fileID: 114573964}
   - component: {fileID: 114573965}
   m_Layer: 3
-  m_Name: Player
+  m_Name: Player2
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &114573960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1208,7 +1213,7 @@ GameObject:
   - component: {fileID: 692516807}
   - component: {fileID: 692516808}
   - component: {fileID: 692516809}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Guppy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1669,6 +1674,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 458244155}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1109448532
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3912298901860993927, guid: 1bba21696d32bd846aea929100aa4de1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3912298901860993927, guid: 1bba21696d32bd846aea929100aa4de1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3912298901860993927, guid: 1bba21696d32bd846aea929100aa4de1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3912298901860993927, guid: 1bba21696d32bd846aea929100aa4de1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3912298901860993927, guid: 1bba21696d32bd846aea929100aa4de1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3912298901860993927, guid: 1bba21696d32bd846aea929100aa4de1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3912298901860993927, guid: 1bba21696d32bd846aea929100aa4de1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3912298901860993927, guid: 1bba21696d32bd846aea929100aa4de1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3912298901860993927, guid: 1bba21696d32bd846aea929100aa4de1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3912298901860993927, guid: 1bba21696d32bd846aea929100aa4de1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5563271345397291952, guid: 1bba21696d32bd846aea929100aa4de1, type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1bba21696d32bd846aea929100aa4de1, type: 3}
 --- !u!1 &1278074203
 GameObject:
   m_ObjectHideFlags: 0
@@ -1682,7 +1744,7 @@ GameObject:
   - component: {fileID: 1278074206}
   - component: {fileID: 1278074205}
   - component: {fileID: 1278074204}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Matador
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1701,13 +1763,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f5c2a998416994488354f192a682d49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 114573959}
+  player: {fileID: 33555474}
   lineRenderer: {fileID: 765717185}
   loopForPath: 1
   speed: 3
-  runSpeed: 5
-  runTime: 4
-  rotateTime: 1
+  runSpeed: 6
+  runTime: 1
+  rotateTime: 0.4
+  state: 0
 --- !u!212 &1278074205
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1929,6 +1992,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   matador: {fileID: 1278074204}
+  maxRadius: 6
+  minRadius: 3
 --- !u!1 &1858893463
 GameObject:
   m_ObjectHideFlags: 0
@@ -2088,3 +2153,4 @@ SceneRoots:
   - {fileID: 834301909}
   - {fileID: 692516806}
   - {fileID: 1278074208}
+  - {fileID: 1109448532}

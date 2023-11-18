@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Matador : MonoBehaviour
 {
-    enum State {
+    public enum State {
         FollowPath,
         GoCrazy,
         LookForPlayer,
@@ -22,11 +22,12 @@ public class Matador : MonoBehaviour
     
     float runTimer = 0;
     float rotateTimer = 0;
-    State state = State.FollowPath;
+    public State state = State.FollowPath;
     Vector2 currentTarget = Vector2.zero;
     int currentIndex = 0;
     Vector2[] path;
     Rigidbody2D rb;
+    Vector2 savedVelocity = Vector2.zero;
 
     void Start()
     {
@@ -88,26 +89,37 @@ public class Matador : MonoBehaviour
             case State.FollowPath: 
                 rb.MovePosition(Vector2.MoveTowards(rb.position, currentTarget, speed * Time.fixedDeltaTime));
                 break;
-            default: break;
+            case State.GoCrazy:
+                rb.velocity = savedVelocity;
+                break;
+            case State.LookForPlayer:
+                rb.velocity = Vector2.zero;
+                break;
         }
     }
 
     void LookForPlayer() {
         state = State.LookForPlayer;
-        rb.DORotate(360, rotateTime);
     }
 
     void GoCrazy() {
         state = State.GoCrazy;
         Vector2 diff = player.transform.position - transform.position;
         rb.velocity = runSpeed * diff.normalized;
+        savedVelocity = rb.velocity;
+    }
+
+    public State GetState() {
+        return state;
     }
 
     public void OnPlayerEnter() {
-        GoCrazy();
+        LookForPlayer();
     }
 
     public void OnPlayerExit() {
+        runTimer = runTime;
+        rotateTimer = rotateTime;
         state = State.FollowPath;
     }
 }
