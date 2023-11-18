@@ -10,6 +10,15 @@ public class AudioManager : MonoBehaviour
 
     static AudioManager instance = null;
 
+    public enum AudioTypes{
+        GunCharge,
+        GunShot,
+        GlassBreaking,
+        GunTake,
+        DoorOpen,
+        DoorClose,
+    }
+
     public static AudioManager Instance {
         get {
             if (instance == null)
@@ -28,13 +37,13 @@ public class AudioManager : MonoBehaviour
             temp.volume = m_volume;
         }
     }
-    public void triggerAudio(int index) {
-        if (index >= m_sources.Count) return; 
-        m_sources[index].Play();
+    public void triggerAudio(AudioTypes type) {
+        if ((int)type >= m_sources.Count) return; 
+        m_sources[(int)type].Play();
     }
 
-    public void stopAudio(int index) {
-        if (index >= m_sources.Count) return; 
-        m_sources[index].Stop();
+    public void stopAudio(AudioTypes type) {
+        if ((int)type >= m_sources.Count) return; 
+        m_sources[(int)type].Stop();
     }
 }

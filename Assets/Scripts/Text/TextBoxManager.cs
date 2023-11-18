@@ -122,10 +122,10 @@ public class TextBoxManager : MonoBehaviour
             } else{
                 for(int characterCount = 0;characterCount < parsedText[i].Length;characterCount++){
                     TextMesh.maxVisibleCharacters++;
-                    if(TextMesh.color == Color.black)
-                        AudioManager.Instance.triggerAudio(4);
-                    else
-                        AudioManager.Instance.triggerAudio(3);
+                    //if(TextMesh.color == Color.black)
+                        //AudioManager.Instance.triggerAudio(4);
+                    //else
+                        //AudioManager.Instance.triggerAudio(3);
                     yield return StoppableWaitForSeconds(1 / m_speed);
                 }
             }

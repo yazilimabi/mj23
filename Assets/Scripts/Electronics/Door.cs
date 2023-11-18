@@ -10,6 +10,7 @@ public class Door : PowerConsumer
     {
         col.enabled = false;
         spriteRenderer.enabled = false;
+        AudioManager.Instance.triggerAudio(AudioManager.AudioTypes.DoorOpen);
     }
 
     public override void TurnOff()
