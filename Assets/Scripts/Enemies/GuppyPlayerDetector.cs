@@ -15,7 +15,8 @@ public class GuppyPlayerDetector : MonoBehaviour
     void Start() {
         cc = GetComponent<CircleCollider2D>();
         cc.radius = minRadius;
-        light2D.pointLightInnerRadius = minRadius / 2;
+        light2D.pointLightInnerRadius = minRadius * 0.8f;
+        light2D.pointLightOuterRadius = minRadius;
         light2D.color = Color.green;
     }
 
@@ -25,7 +26,6 @@ public class GuppyPlayerDetector : MonoBehaviour
             if (player.isRolling() && guppy.GetState() != Guppy.State.FollowPath) return;
             guppy.OnPlayerEnter();
             cc.radius = maxRadius;
-            light2D.pointLightInnerRadius = minRadius;
             light2D.color = Color.red;
         }
     }
@@ -35,7 +35,6 @@ public class GuppyPlayerDetector : MonoBehaviour
             if (player.isRolling() && guppy.GetState() != Guppy.State.FollowPath) return;
             guppy.OnPlayerExit();
             cc.radius = minRadius;
-            light2D.pointLightInnerRadius = minRadius / 2;
             light2D.color = Color.green;
         }
     }
