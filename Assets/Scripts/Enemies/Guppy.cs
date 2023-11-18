@@ -11,7 +11,6 @@ public class Guppy : MonoBehaviour
         Shoot,
     }
 
-    [SerializeField] GameObject player;
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] Transform nozzle;
     [SerializeField] Rigidbody2D hand;
@@ -22,6 +21,7 @@ public class Guppy : MonoBehaviour
     [SerializeField] bool loopForPath = true;
     [SerializeField] float speed = 3f;
 
+    GameObject player;
     float shootTimer = 0;
     State state = State.FollowPath;
     Vector2 currentTarget = Vector2.zero;
@@ -31,6 +31,8 @@ public class Guppy : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindWithTag("Player").transform.parent.gameObject;
+
         shootTimer = shootDelay * 2;
 
         rb = GetComponent<Rigidbody2D>();

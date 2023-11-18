@@ -12,7 +12,6 @@ public class Matador : MonoBehaviour
         LookForPlayer,
     }
 
-    [SerializeField] GameObject player;
     [SerializeField] LineRenderer lineRenderer;
     [SerializeField] bool loopForPath = true;
     [SerializeField] float speed = 3f;
@@ -20,9 +19,10 @@ public class Matador : MonoBehaviour
     [SerializeField] float runTime = 4f;
     [SerializeField] float rotateTime = 1f;
     
+    GameObject player;
     float runTimer = 0;
     float rotateTimer = 0;
-    public State state = State.FollowPath;
+    State state = State.FollowPath;
     Vector2 currentTarget = Vector2.zero;
     int currentIndex = 0;
     Vector2[] path;
@@ -31,6 +31,8 @@ public class Matador : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindWithTag("Player").transform.parent.gameObject;
+
         runTimer = runTime;
         rotateTimer = rotateTime;
 
