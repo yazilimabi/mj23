@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class MatadorPlayerDetector : MonoBehaviour
 {
     [SerializeField] Matador matador;
+    [SerializeField] Light2D light2D;
     [SerializeField] float maxRadius;
     [SerializeField] float minRadius;
 
@@ -13,6 +15,8 @@ public class MatadorPlayerDetector : MonoBehaviour
     void Start() {
         cc = GetComponent<CircleCollider2D>();
         cc.radius = minRadius;
+        light2D.pointLightInnerRadius = minRadius / 2;
+        light2D.color = Color.green;
     }
 
     void OnTriggerEnter2D(Collider2D col) {
@@ -21,6 +25,8 @@ public class MatadorPlayerDetector : MonoBehaviour
             if (player.isRolling() && matador.GetState() != Matador.State.FollowPath) return;
             matador.OnPlayerEnter();
             cc.radius = maxRadius;
+            light2D.pointLightInnerRadius = minRadius;
+            light2D.color = Color.red;
         }
     }
     void OnTriggerExit2D(Collider2D col){
@@ -29,6 +35,8 @@ public class MatadorPlayerDetector : MonoBehaviour
             if (player.isRolling() && matador.GetState() != Matador.State.FollowPath) return;
             matador.OnPlayerExit();
             cc.radius = minRadius;
+            light2D.pointLightInnerRadius = minRadius / 2;
+            light2D.color = Color.green;
         }
     }
 

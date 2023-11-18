@@ -160,9 +160,8 @@ MonoBehaviour:
   walkSpeed: 5
   rollMultiplier: 2.5
   rollInvincibilityTime: 0.4
-  currentRollMultiplier: 0
   ableToWalk: 1
-  isRolling: 0
+  _isRolling: 0
   hitCollider: {fileID: 751439177}
   spriteRenderer: {fileID: 114573962}
   hand: {fileID: 1858893465}
