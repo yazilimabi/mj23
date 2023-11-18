@@ -13,6 +13,7 @@ public class Matador : MonoBehaviour
     }
 
     [SerializeField] LineRenderer lineRenderer;
+    [SerializeField] int startingIndex = 0;
     [SerializeField] bool loopForPath = true;
     [SerializeField] float speed = 3f;
     [SerializeField] float runSpeed = 5f;
@@ -39,9 +40,14 @@ public class Matador : MonoBehaviour
             currentTarget = transform.position;
             return;
         }
+
         path = new Vector2[lineRenderer.positionCount];
         for (int i = 0; i < path.Length; i++) {
-            path[i] = lineRenderer.GetPosition(i) + lineRenderer.transform.position;
+            int j = i + startingIndex;
+            if (j >= path.Length) {
+                j -= path.Length;
+            }
+            path[j] = lineRenderer.GetPosition(i) + lineRenderer.transform.position;
         }
         NextTarget();
         if (path.Length >= 1) {
