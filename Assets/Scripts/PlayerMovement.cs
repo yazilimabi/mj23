@@ -32,8 +32,9 @@ public class PlayerMovement : MonoBehaviour
             
             _isRolling = true;
             currentRollMultiplier = 0;
+            hand.gameObject.SetActive(false);
             SetInvincibility(rollInvincibilityTime, false);
-            DOTween.To(()=> currentRollMultiplier, x => currentRollMultiplier = x, rollMultiplier, 0.7f).SetEase(Ease.OutQuad).OnComplete(()=>_isRolling = false).Play();
+            DOTween.To(()=> currentRollMultiplier, x => currentRollMultiplier = x, rollMultiplier, 0.7f).SetEase(Ease.OutQuad).OnComplete(()=>{_isRolling = false; if(ableToWalk) hand.gameObject.SetActive(true);}).Play();
         }
     }
     
@@ -69,12 +70,13 @@ public class PlayerMovement : MonoBehaviour
     public void DisableMovement(bool continueMoving = false) {
         ableToWalk = false;
         _isRolling = false;
-
+        hand.gameObject.SetActive(false);
         if(!continueMoving) _rigidbody.velocity = Vector2.zero;
     }
 
     public void EnableMovement() {
         ableToWalk = true;
+        hand.gameObject.SetActive(true);
         _rigidbody.velocity = Vector2.zero;
     }
 

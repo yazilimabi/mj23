@@ -24,6 +24,8 @@ public class GunController : MonoBehaviour
 
     void Update()
     {
+        if(GetComponent<PlayerMovement>().isRolling() || GetComponentInChildren<VoidDetector>().isFalling) return;
+
         if(gunReloadTimer > 0){
             gunReloadTimer-=Time.deltaTime;
             return;

@@ -37,8 +37,9 @@ public class AudioManager : MonoBehaviour
             temp.volume = m_volume;
         }
     }
-    public void triggerAudio(AudioTypes type) {
+    public void triggerAudio(AudioTypes type, bool loop = false) {
         if ((int)type >= m_sources.Count) return; 
+        m_sources[(int)type].loop = loop;
         m_sources[(int)type].Play();
     }
 

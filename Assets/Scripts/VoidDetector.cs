@@ -5,7 +5,7 @@ using UnityEngine;
 public class VoidDetector : MonoBehaviour
 {
     public List<Transform> checkPoints = new List<Transform>();
-    bool isFalling = false;
+    public bool isFalling = false;
     public PlayerMovement movement;
     public Vector3 lastPos;
     void Awake(){
