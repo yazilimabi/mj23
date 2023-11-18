@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3681557468437747447}
   - component: {fileID: 4395096556411271288}
   - component: {fileID: 3017163449544046921}
+  - component: {fileID: 7092461772797717807}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -143,10 +144,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b804cbfa1e62e5746b2cf25facc36166, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generators:
-  - {fileID: 0}
-  - {fileID: 0}
-  OR_Mode: 0
-  currentState: 0
+  LogicMode: 0
+  Reversed: 0
   col: {fileID: 4395096556411271288}
   spriteRenderer: {fileID: 3681557468437747447}
+--- !u!114 &7092461772797717807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5623204892038106186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 0
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: b7224bbbdbe1707f0000000063a80fefe9a10db021efd7d0
+  m_ShapePath:
+  - {x: -0.5, y: -1, z: 0}
+  - {x: -0.5, y: 1, z: 0}
+  - {x: 0.5, y: 1, z: 0}
+  - {x: 0.5, y: -1, z: 0}
+  m_ShapePathHash: 0
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -422816
+  m_LocalBounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0.5, y: 1, z: 0}
