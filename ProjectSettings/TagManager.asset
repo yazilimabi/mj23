@@ -8,11 +8,8 @@ TagManager:
   - Lever
   - SearchCollider
   - Void
-<<<<<<< HEAD
-  - Powerbox
-=======
   - Enemy
->>>>>>> ccac678eaaad8962e4f5526febdcc7c9ee452286
+  - Powerbox
   layers:
   - Default
   - TransparentFX
