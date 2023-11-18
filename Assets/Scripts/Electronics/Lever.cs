@@ -19,6 +19,11 @@ public class Lever : PowerGenerator
         if(other.CompareTag("Player") && timer <= 0){
             SetState(!state);
             timer = interactTimer;
+        }else if(other.GetComponent<Matador>()){
+            if(other.GetComponent<Matador>().GetState() == Matador.State.GoCrazy){
+                SetState(!state);
+                timer = interactTimer;
+            }
         }
     }
     

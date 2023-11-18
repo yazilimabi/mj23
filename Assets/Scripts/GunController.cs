@@ -15,6 +15,7 @@ public class GunController : MonoBehaviour
     float gunReloadTimer = 0f;
 
     bool audioTriggered = false;
+    [SerializeField] bool gunEnabled = true;
     
     Tweener shaketween = null;
     void Start(){
@@ -24,7 +25,7 @@ public class GunController : MonoBehaviour
 
     void Update()
     {
-        if(GetComponent<PlayerMovement>().isRolling() || GetComponentInChildren<VoidDetector>().isFalling) return;
+        if(GetComponent<PlayerMovement>().isRolling() || GetComponentInChildren<VoidDetector>().isFalling || !gunEnabled) return;
 
         if(gunReloadTimer > 0){
             gunReloadTimer-=Time.deltaTime;
@@ -58,5 +59,19 @@ public class GunController : MonoBehaviour
         var bullet = Instantiate(bulletPrefab, nozzle.position, hand.rotation);
         bullet.GetComponent<Rigidbody2D>().AddForce(nozzle.up * fireForce, ForceMode2D.Impulse);
         audioTriggered = false;
+    }
+
+    public void EnableGun(){
+        gunEnabled = true;
+        hand.gameObject.SetActive(true);
+    }
+
+    public void ActivateGun(){
+        if(gunEnabled)
+            hand.gameObject.SetActive(true);
+    }
+
+    public void DeactivateGun(){
+        hand.gameObject.SetActive(false);
     }
 }

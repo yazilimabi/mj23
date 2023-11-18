@@ -15,7 +15,7 @@ public class GuppyPlayerDetector : MonoBehaviour
     void Start() {
         cc = GetComponent<CircleCollider2D>();
         cc.radius = minRadius;
-        light2D.pointLightInnerRadius = minRadius * 0.8f;
+        light2D.pointLightInnerRadius = minRadius * 0.9f;
         light2D.pointLightOuterRadius = minRadius;
         light2D.color = Color.green;
     }

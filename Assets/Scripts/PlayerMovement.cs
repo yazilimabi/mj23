@@ -32,9 +32,10 @@ public class PlayerMovement : MonoBehaviour
             
             _isRolling = true;
             currentRollMultiplier = 0;
-            hand.gameObject.SetActive(false);
+            AudioManager.Instance.stopAudio(AudioManager.AudioTypes.GunCharge);
+            GetComponent<GunController>().DeactivateGun();
             SetInvincibility(rollInvincibilityTime, false);
-            DOTween.To(()=> currentRollMultiplier, x => currentRollMultiplier = x, rollMultiplier, 0.7f).SetEase(Ease.OutQuad).OnComplete(()=>{_isRolling = false; if(ableToWalk) hand.gameObject.SetActive(true);}).Play();
+            DOTween.To(()=> currentRollMultiplier, x => currentRollMultiplier = x, rollMultiplier, 0.7f).SetEase(Ease.OutQuad).OnComplete(()=>{_isRolling = false; if(ableToWalk) GetComponent<GunController>().ActivateGun();;}).Play();
         }
     }
     
@@ -70,13 +71,14 @@ public class PlayerMovement : MonoBehaviour
     public void DisableMovement(bool continueMoving = false) {
         ableToWalk = false;
         _isRolling = false;
-        hand.gameObject.SetActive(false);
+        GetComponent<GunController>().DeactivateGun();
+        AudioManager.Instance.stopAudio(AudioManager.AudioTypes.GunCharge);
         if(!continueMoving) _rigidbody.velocity = Vector2.zero;
     }
 
     public void EnableMovement() {
         ableToWalk = true;
-        hand.gameObject.SetActive(true);
+        GetComponent<GunController>().ActivateGun();
         _rigidbody.velocity = Vector2.zero;
     }
 
