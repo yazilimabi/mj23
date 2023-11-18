@@ -11,7 +11,10 @@ public class Bullet : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col){
         if(col.CompareTag("Player")){
             Destroy(gameObject);
-        }else if(col.CompareTag("Lever")){
+        } else if (col.CompareTag("Enemy")) {
+            col.transform.parent.GetComponent<EnemyHealth>().Damage(100);
+        }
+        else if(col.CompareTag("Lever")){
             col.GetComponent<PowerGenerator>().SetState(!col.GetComponent<PowerGenerator>().state);
             Destroy(gameObject);
         }else if(col.CompareTag("Powerbox")){

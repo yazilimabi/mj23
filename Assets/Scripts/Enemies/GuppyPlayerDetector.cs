@@ -23,7 +23,9 @@ public class GuppyPlayerDetector : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col) {
         if (col.CompareTag("Player")) {
             var player = col.transform.parent.GetComponent<PlayerMovement>();
-            if (player.isRolling() && guppy.GetState() != Guppy.State.FollowPath) return;
+            var state = guppy.GetState(); 
+            if (player.isRolling() && state != Guppy.State.FollowPath) return;
+            if (state == Guppy.State.Disabled) return;
             guppy.OnPlayerEnter();
             cc.radius = maxRadius;
             light2D.color = Color.red;
@@ -32,7 +34,9 @@ public class GuppyPlayerDetector : MonoBehaviour
     void OnTriggerExit2D(Collider2D col){
         if (col.CompareTag("Player")) {
             var player = col.transform.parent.GetComponent<PlayerMovement>();
-            if (player.isRolling() && guppy.GetState() != Guppy.State.FollowPath) return;
+            var state = guppy.GetState(); 
+            if (player.isRolling() && state != Guppy.State.FollowPath) return;
+            if (state == Guppy.State.Disabled) return;
             guppy.OnPlayerExit();
             cc.radius = minRadius;
             light2D.color = Color.green;
