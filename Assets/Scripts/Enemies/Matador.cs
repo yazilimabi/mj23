@@ -7,6 +7,7 @@ using UnityEngine;
 public class Matador : MonoBehaviour
 {
     public enum State {
+        Disabled,
         FollowPath,
         GoCrazy,
         LookForPlayer,
@@ -136,5 +137,10 @@ public class Matador : MonoBehaviour
         runTimer = runTime;
         rotateTimer = rotateTime;
         state = State.FollowPath;
+    }
+
+    public void Disable() {
+        rb.velocity = Vector2.zero;
+        state = State.Disabled;
     }
 }

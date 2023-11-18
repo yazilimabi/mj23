@@ -7,6 +7,7 @@ using UnityEngine;
 public class Guppy : MonoBehaviour
 {
     public enum State {
+        Disabled,
         FollowPath,
         Shoot,
     }
@@ -117,5 +118,10 @@ public class Guppy : MonoBehaviour
         state = State.FollowPath;
         Vector2 diff = new Vector3(currentTarget.x, currentTarget.y) - transform.position;
         hand.DORotate(Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg - 90, 1f);
+    }
+
+    public void Disable() {
+        rb.velocity = Vector2.zero;
+        state = State.Disabled;
     }
 }
