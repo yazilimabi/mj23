@@ -19,7 +19,6 @@ public class PlayerMovement : MonoBehaviour
     Vector2 _direction = Vector2.zero;
     Vector2 mousePosition = Vector2.zero;
     Vector2 _rollDirection = Vector2.zero;
-    [SerializeField] Vector2 spawnpos;
 
     void Update()
     {
