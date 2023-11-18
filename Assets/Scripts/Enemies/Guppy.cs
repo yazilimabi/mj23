@@ -19,6 +19,7 @@ public class Guppy : MonoBehaviour
     [SerializeField] float shootDelay = 0.75f;
 
     [SerializeField] LineRenderer lineRenderer;
+    [SerializeField] int startingIndex = 0;
     [SerializeField] bool loopForPath = true;
     [SerializeField] float speed = 3f;
 
@@ -44,7 +45,11 @@ public class Guppy : MonoBehaviour
         }
         path = new Vector2[lineRenderer.positionCount];
         for (int i = 0; i < path.Length; i++) {
-            path[i] = lineRenderer.GetPosition(i);
+            int j = i + startingIndex;
+            if (j >= path.Length) {
+                j -= path.Length;
+            }
+            path[j] = lineRenderer.GetPosition(i);
         }
         NextTarget();
         if (path.Length >= 1) {
