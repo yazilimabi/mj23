@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Guppy : MonoBehaviour
 {
-    enum State {
+    public enum State {
         FollowPath,
         Shoot,
     }
@@ -93,6 +93,10 @@ public class Guppy : MonoBehaviour
     void Shoot() {
         var bullet = Instantiate(bulletPrefab, nozzle.position, hand.transform.rotation);
         bullet.GetComponent<Rigidbody2D>().AddForce(nozzle.up * fireForce, ForceMode2D.Impulse);
+    }
+
+    public State GetState() {
+        return state;
     }
 
     public void OnPlayerEnter() {

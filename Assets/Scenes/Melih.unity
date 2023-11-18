@@ -1126,7 +1126,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 5
 --- !u!114 &625035319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1140,6 +1140,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   guppy: {fileID: 692516809}
+  maxRadius: 10
+  minRadius: 5
 --- !u!1 &683697025
 GameObject:
   m_ObjectHideFlags: 0
@@ -1219,7 +1221,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!50 &692516805
 Rigidbody2D:
   serializedVersion: 4
@@ -1373,7 +1375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 571df0deb87b97c4187ff913cb62ed4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 114573959}
+  player: {fileID: 33555474}
   bulletPrefab: {fileID: 8902166408919652182, guid: 913d90331d3741e419c40c4d08d7c917, type: 3}
   nozzle: {fileID: 1079108461}
   hand: {fileID: 683697027}
@@ -1684,7 +1686,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3912298901860993927, guid: 1bba21696d32bd846aea929100aa4de1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -4.96
       objectReference: {fileID: 0}
     - target: {fileID: 3912298901860993927, guid: 1bba21696d32bd846aea929100aa4de1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1750,7 +1752,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1278074204
 MonoBehaviour:
   m_ObjectHideFlags: 0

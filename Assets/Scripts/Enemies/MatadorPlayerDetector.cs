@@ -12,6 +12,7 @@ public class MatadorPlayerDetector : MonoBehaviour
 
     void Start() {
         cc = GetComponent<CircleCollider2D>();
+        cc.radius = minRadius;
     }
 
     void OnTriggerEnter2D(Collider2D col) {
