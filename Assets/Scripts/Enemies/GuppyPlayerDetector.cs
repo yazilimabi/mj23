@@ -18,7 +18,7 @@ public class GuppyPlayerDetector : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col) {
         if (col.CompareTag("Player")) {
             var player = col.transform.parent.GetComponent<PlayerMovement>();
-            if (player.Rolling() && guppy.GetState() != Guppy.State.FollowPath) return;
+            if (player.isRolling() && guppy.GetState() != Guppy.State.FollowPath) return;
             guppy.OnPlayerEnter();
             cc.radius = maxRadius;
         }
@@ -26,7 +26,7 @@ public class GuppyPlayerDetector : MonoBehaviour
     void OnTriggerExit2D(Collider2D col){
         if (col.CompareTag("Player")) {
             var player = col.transform.parent.GetComponent<PlayerMovement>();
-            if (player.Rolling() && guppy.GetState() != Guppy.State.FollowPath) return;
+            if (player.isRolling() && guppy.GetState() != Guppy.State.FollowPath) return;
             guppy.OnPlayerExit();
             cc.radius = minRadius;
         }

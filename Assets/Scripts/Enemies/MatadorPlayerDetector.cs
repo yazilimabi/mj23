@@ -18,7 +18,7 @@ public class MatadorPlayerDetector : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col) {
         if (col.CompareTag("Player")) {
             var player = col.transform.parent.GetComponent<PlayerMovement>();
-            if (player.Rolling() && matador.GetState() != Matador.State.FollowPath) return;
+            if (player.isRolling() && matador.GetState() != Matador.State.FollowPath) return;
             matador.OnPlayerEnter();
             cc.radius = maxRadius;
         }
@@ -26,7 +26,7 @@ public class MatadorPlayerDetector : MonoBehaviour
     void OnTriggerExit2D(Collider2D col){
         if (col.CompareTag("Player")) {
             var player = col.transform.parent.GetComponent<PlayerMovement>();
-            if (player.Rolling() && matador.GetState() != Matador.State.FollowPath) return;
+            if (player.isRolling() && matador.GetState() != Matador.State.FollowPath) return;
             matador.OnPlayerExit();
             cc.radius = minRadius;
         }
