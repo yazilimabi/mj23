@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-[ExecuteInEditMode]
 public class Matador : MonoBehaviour
 {
     public enum State {
+        Disabled,
         FollowPath,
         GoCrazy,
         LookForPlayer,
     }
 
     [SerializeField] LineRenderer lineRenderer;
+    [SerializeField] int startingIndex = 0;
     [SerializeField] bool loopForPath = true;
     [SerializeField] float speed = 3f;
     [SerializeField] float runSpeed = 5f;
@@ -39,9 +40,14 @@ public class Matador : MonoBehaviour
             currentTarget = transform.position;
             return;
         }
+
         path = new Vector2[lineRenderer.positionCount];
         for (int i = 0; i < path.Length; i++) {
-            path[i] = lineRenderer.GetPosition(i);
+            int j = i + startingIndex;
+            if (j >= path.Length) {
+                j -= path.Length;
+            }
+            path[j] = lineRenderer.GetPosition(i) + lineRenderer.transform.position;
         }
         NextTarget();
         if (path.Length >= 1) {
@@ -136,5 +142,10 @@ public class Matador : MonoBehaviour
         runTimer = runTime;
         rotateTimer = rotateTime;
         state = State.FollowPath;
+    }
+
+    public void Disable() {
+        rb.velocity = Vector2.zero;
+        state = State.Disabled;
     }
 }
