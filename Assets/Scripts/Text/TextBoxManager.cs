@@ -106,11 +106,11 @@ public class TextBoxManager : MonoBehaviour
         }
 
         if(parsedText.Length > 1 && parsedText[1] == "char"){
-            TextBoxImage.sprite = CharTextBG;
-            TextMesh.color = Color.black;
+            //TextBoxImage.sprite = CharTextBG;
+            //TextMesh.color = Color.black;
         } else {
-            TextBoxImage.sprite = NarratorTextBG;
-            TextMesh.color = Color.white;
+            //TextBoxImage.sprite = NarratorTextBG;
+            //TextMesh.color = Color.white;
         }
         TextMesh.SetText(text);
         TextMesh.maxVisibleCharacters = 0;

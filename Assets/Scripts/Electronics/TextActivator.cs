@@ -6,6 +6,8 @@ public class TextActivator : PowerConsumer
 {
     [SerializeField] GameObject textObject;
 
+    [SerializeField] bool canReplay = false;
+
     public override void TurnOn()
     {
         textObject.SetActive(true);
@@ -13,6 +15,7 @@ public class TextActivator : PowerConsumer
 
     public override void TurnOff()
     {
-        textObject.SetActive(false);
+        if(canReplay)
+            textObject.SetActive(false);
     }
 }
