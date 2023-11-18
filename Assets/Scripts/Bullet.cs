@@ -13,6 +13,7 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col){
         if(col.CompareTag("Player")){
+            Debug.Log(col.transform.parent.name);
             col.transform.parent.GetComponent<PlayerHealth>().Damage(playerDamage);
             Destroy(gameObject);
         } else if (col.CompareTag("Enemy")) {

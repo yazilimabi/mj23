@@ -213,6 +213,7 @@ GameObject:
   - component: {fileID: 2508580027355457461}
   - component: {fileID: 496617029281197796}
   - component: {fileID: 1424210184068151940}
+  - component: {fileID: 2545701544385210561}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -338,7 +339,6 @@ MonoBehaviour:
   hitCollider: {fileID: 8916125681104797272}
   spriteRenderer: {fileID: 1468714370078534807}
   hand: {fileID: 5040565906788233603}
-  spawnpos: {x: 5, y: 0}
 --- !u!61 &2508580027355457461
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -415,6 +415,35 @@ MonoBehaviour:
   nozzle: {fileID: 3466465506466407044}
   hand: {fileID: 16279235276907585}
   bulletPrefab: {fileID: 8902166408919652182, guid: 913d90331d3741e419c40c4d08d7c917, type: 3}
+  gunEnabled: 1
+--- !u!114 &2545701544385210561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5563271345397291952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8793db259051729419bf07898ee0304a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1424210184068151940}
+        m_TargetAssemblyTypeName: GunController, Assembly-CSharp
+        m_MethodName: DeactivateGun
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  maxHealth: 100
 --- !u!1 &5891690829378914817
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,5 +661,6 @@ MonoBehaviour:
   checkPoints:
   - {fileID: 3988407542725298758}
   - {fileID: 1446243123410279883}
+  isFalling: 0
   movement: {fileID: 0}
   lastPos: {x: 0, y: 0, z: 0}
