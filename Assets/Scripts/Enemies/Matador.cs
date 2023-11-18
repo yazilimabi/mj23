@@ -110,6 +110,9 @@ public class Matador : MonoBehaviour
             case State.LookForPlayer:
                 rb.velocity = Vector2.zero;
                 break;
+            case State.Disabled:
+                rb.velocity = Vector2.zero;
+                break;
         }
     }
 
@@ -147,5 +150,10 @@ public class Matador : MonoBehaviour
     public void Disable() {
         rb.velocity = Vector2.zero;
         state = State.Disabled;
+    }
+
+    public void OnDeath() {
+        Debug.Log("aaa");
+        Disable();
     }
 }

@@ -99,6 +99,9 @@ public class Guppy : MonoBehaviour
             case State.FollowPath: 
                 rb.MovePosition(Vector2.MoveTowards(rb.position, currentTarget, speed * Time.fixedDeltaTime));
                 break;
+            case State.Disabled:
+                rb.velocity = Vector2.zero;
+                break;
             default: break;
         }
     }
@@ -128,5 +131,10 @@ public class Guppy : MonoBehaviour
     public void Disable() {
         rb.velocity = Vector2.zero;
         state = State.Disabled;
+    }
+
+    public void OnDeath() {
+        Debug.Log("aaa");
+        Disable();
     }
 }
