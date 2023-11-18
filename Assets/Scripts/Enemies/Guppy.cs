@@ -49,7 +49,7 @@ public class Guppy : MonoBehaviour
             if (j >= path.Length) {
                 j -= path.Length;
             }
-            path[j] = lineRenderer.GetPosition(i);
+            path[j] = lineRenderer.GetPosition(i) + lineRenderer.transform.position;
         }
         NextTarget();
         if (path.Length >= 1) {
