@@ -8,11 +8,13 @@ public class Bullet : MonoBehaviour
     [SerializeField] float playerDamage = 50f;
 
     void OnCollisionEnter2D(Collision2D col){
-        Destroy(gameObject);
+        if(!col.gameObject.CompareTag("Player")){
+            Destroy(gameObject);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D col){
-        if(col.CompareTag("Player")){
+        if(col.CompareTag("Player") && !GameManager.Instance.player.GetComponent<PlayerMovement>().isInvincible()){
             Debug.Log(col.transform.parent.name);
             col.transform.parent.GetComponent<PlayerHealth>().Damage(playerDamage);
             Destroy(gameObject);

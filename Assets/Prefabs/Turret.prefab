@@ -133,7 +133,7 @@ MonoBehaviour:
   fireForce: 10
   shootTime: 0.2
   nozzle: {fileID: 5930794182290843360}
-  bulletPrefab: {fileID: 8902166408919652182, guid: 913d90331d3741e419c40c4d08d7c917, type: 3}
+  bulletPrefab: {fileID: 8902166408919652182, guid: 5e4468737668f8f48b04978bd4b06b8d, type: 3}
 --- !u!61 &2376325564692230307
 BoxCollider2D:
   m_ObjectHideFlags: 0

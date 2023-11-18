@@ -324,7 +324,7 @@ MonoBehaviour:
   - {fileID: 8498985925679098789}
   - {fileID: 1508552581241250821}
   - {fileID: 2367826378828522812}
-  bulletPrefab: {fileID: 8902166408919652182, guid: 913d90331d3741e419c40c4d08d7c917, type: 3}
+  bulletPrefab: {fileID: 8902166408919652182, guid: 5e4468737668f8f48b04978bd4b06b8d, type: 3}
 --- !u!1 &2577518247996022671
 GameObject:
   m_ObjectHideFlags: 0

@@ -1423,50 +1423,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &887450751 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5563271345397291952, guid: 1bba21696d32bd846aea929100aa4de1, type: 3}
-  m_PrefabInstance: {fileID: 1109448532}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &887450752 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1424210184068151940, guid: 1bba21696d32bd846aea929100aa4de1, type: 3}
-  m_PrefabInstance: {fileID: 1109448532}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 887450751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2025b2a10aca1da42bab11056d66313d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &887450759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 887450751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8793db259051729419bf07898ee0304a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onDeath:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 887450752}
-        m_TargetAssemblyTypeName: GunController, Assembly-CSharp
-        m_MethodName: DeactivateGun
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  maxHealth: 100
 --- !u!1001 &1109448532
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1522,10 +1478,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5563271345397291952, guid: 1bba21696d32bd846aea929100aa4de1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 887450759}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bba21696d32bd846aea929100aa4de1, type: 3}
 --- !u!1 &1858893463
 GameObject:
