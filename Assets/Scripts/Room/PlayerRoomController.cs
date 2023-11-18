@@ -19,7 +19,7 @@ public class PlayerRoomController : MonoBehaviour
             room.ActivateRoom(transform);
             activeRooms.Add(room);
             if(activeRooms.Count > 1){
-                playerMovement.DisableMovement();
+                playerMovement.DisableMovement(true);
             }
         }
     }

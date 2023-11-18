@@ -7,6 +7,7 @@ TagManager:
   - Room
   - Lever
   - SearchCollider
+  - Void
   layers:
   - Default
   - TransparentFX

@@ -70,11 +70,13 @@ public class PlayerMovement : MonoBehaviour
         return isRolling;
     }
 
-    public void DisableMovement() {
+    public void DisableMovement(bool continueMoving = false) {
         ableToWalk = false;
         isRolling = false;
         rollTimer = 0;
         hitCollider.enabled = true;
+
+        if(!continueMoving) _rigidbody.velocity = Vector2.zero;
         //spriteRenderer.color = spriteRenderer.color.WithAlpha(1f);
     }
 
