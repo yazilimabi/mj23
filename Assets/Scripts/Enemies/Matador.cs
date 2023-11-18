@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-[ExecuteInEditMode]
 public class Matador : MonoBehaviour
 {
     public enum State {
@@ -42,7 +41,7 @@ public class Matador : MonoBehaviour
         }
         path = new Vector2[lineRenderer.positionCount];
         for (int i = 0; i < path.Length; i++) {
-            path[i] = lineRenderer.GetPosition(i);
+            path[i] = lineRenderer.GetPosition(i) + lineRenderer.transform.position;
         }
         NextTarget();
         if (path.Length >= 1) {
