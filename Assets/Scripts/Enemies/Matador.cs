@@ -38,6 +38,10 @@ public class Matador : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
 
+        if (lineRenderer == null) {
+            currentTarget = transform.position;
+            return;
+        }
         path = new Vector2[lineRenderer.positionCount];
         for (int i = 0; i < path.Length; i++) {
             path[i] = lineRenderer.GetPosition(i);
@@ -49,6 +53,7 @@ public class Matador : MonoBehaviour
     }
 
     void NextTarget() {
+        if (lineRenderer == null) return;
         if (path.Length == 0) return;
         if (currentIndex != path.Length) {
             currentTarget = path[currentIndex];
