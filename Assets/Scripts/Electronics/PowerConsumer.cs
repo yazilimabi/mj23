@@ -1,33 +1,47 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.ExceptionServices;
 using UnityEngine;
 
 public class PowerConsumer : MonoBehaviour
 {
     [SerializeField] List<PowerGenerator> generators = new List<PowerGenerator>();
-    [SerializeField] bool OR_Mode = false;
-    [SerializeField] protected bool currentState = false;
+    enum LogicEnum{
+        AND,
+        OR,
+        XOR
+    } 
+    [SerializeField] LogicEnum LogicMode;
+    [SerializeField] bool Reversed = false;
+    protected bool currentState = false;
     void Start()
     {
-        UpdateState();
-        if(currentState) TurnOn();
+        UpdateState(true);
     }
 
-    public void UpdateState(){
-        bool tempState = !OR_Mode;
+    public void UpdateState(bool forceUpdate = false){
+        bool tempState = LogicMode == LogicEnum.AND;
         foreach(PowerGenerator generator in generators){
-            if(OR_Mode){
-                tempState = tempState || generator.state;
-            }else{
-                tempState = tempState && generator.state;
+            switch(LogicMode){
+                case LogicEnum.AND:
+                    tempState &= generator.state;
+                break;
+                case LogicEnum.OR:
+                    tempState |= generator.state;
+                break;
+                case LogicEnum.XOR:
+                    tempState ^= generator.state;
+                break;
             }
         }
 
-        if(tempState != currentState){
-            if(tempState) TurnOn();
-            else TurnOff();
-
+        if(forceUpdate || tempState != currentState){
             currentState = tempState;
+
+            if(currentState == !Reversed) 
+                TurnOn();
+            else 
+                TurnOff();
         }
     }
 

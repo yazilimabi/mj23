@@ -1,9 +1,9 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class Matador : MonoBehaviour
 {
     public enum State {
@@ -29,10 +29,7 @@ public class Matador : MonoBehaviour
     Rigidbody2D rb;
     Vector2 savedVelocity = Vector2.zero;
 
-    void Start()
-    {
-        player = GameObject.FindWithTag("Player").transform.parent.gameObject;
-
+    void Awake() {
         runTimer = runTime;
         rotateTimer = rotateTime;
 
@@ -50,6 +47,11 @@ public class Matador : MonoBehaviour
         if (path.Length >= 1) {
             transform.position = currentTarget;
         }
+    }
+
+    void Start()
+    {
+        player = GameObject.FindWithTag("Player").transform.parent.gameObject;
     }
 
     void NextTarget() {
@@ -105,13 +107,19 @@ public class Matador : MonoBehaviour
         }
     }
 
+
+    void OnEnable() {
+        transform.position = currentTarget;
+    }
+
     void LookForPlayer() {
         state = State.LookForPlayer;
     }
 
     void GoCrazy() {
         state = State.GoCrazy;
-        Vector2 diff = player.transform.position - transform.position;
+        float random = Random.Range(0f, 260f);
+        Vector2 diff = player.transform.position - transform.position - new Vector3(Mathf.Cos(random), Mathf.Sin(random), 0);
         rb.velocity = runSpeed * diff.normalized;
         savedVelocity = rb.velocity;
     }
