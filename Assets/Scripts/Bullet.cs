@@ -14,8 +14,9 @@ public class Bullet : MonoBehaviour
         }else if(col.CompareTag("Lever")){
             col.GetComponent<PowerGenerator>().SetState(!col.GetComponent<PowerGenerator>().state);
             Destroy(gameObject);
-        }else{
-            //Debug.Log("Hit Something!");
+        }else if(col.CompareTag("Powerbox")){
+            col.GetComponent<PowerBox>().Explode();
+            Destroy(gameObject);
         }
     }
 }

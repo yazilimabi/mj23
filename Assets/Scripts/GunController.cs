@@ -57,6 +57,7 @@ public class GunController : MonoBehaviour
 
     public void Shoot(){
         var bullet = Instantiate(bulletPrefab, nozzle.position, hand.rotation);
+        AudioManager.Instance.triggerAudio(AudioManager.AudioTypes.GunShot);
         bullet.GetComponent<Rigidbody2D>().AddForce(nozzle.up * fireForce, ForceMode2D.Impulse);
         audioTriggered = false;
     }

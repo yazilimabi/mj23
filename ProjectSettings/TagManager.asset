@@ -8,6 +8,7 @@ TagManager:
   - Lever
   - SearchCollider
   - Void
+  - Powerbox
   layers:
   - Default
   - TransparentFX

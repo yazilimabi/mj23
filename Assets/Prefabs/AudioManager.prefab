@@ -46,4 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_audios:
   - {fileID: 8300000, guid: 75840eaaa78c32c44b346f76e2b653d9, type: 3}
+  - {fileID: 8300000, guid: 75840eaaa78c32c44b346f76e2b653d9, type: 3}
+  - {fileID: 8300000, guid: f8a5d06820b171d4b8855a05f8139ef4, type: 3}
+  - {fileID: 8300000, guid: 437ca30402109b14c8a17c485f2d1c78, type: 3}
+  - {fileID: 8300000, guid: 067388b1a72135e4b85af99113d3ef93, type: 3}
+  - {fileID: 8300000, guid: 75840eaaa78c32c44b346f76e2b653d9, type: 3}
   m_volume: 0.3

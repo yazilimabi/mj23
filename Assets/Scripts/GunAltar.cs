@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG;
-using UnityEngine.Rendering.Universal;
 public class GunAltar : MonoBehaviour
 {
     [SerializeField] Image image;
     [SerializeField] float fadeTime = 2f;
-    [SerializeField] Light2D globalLight;
 
     private YieldInstruction fadeInstruction = new YieldInstruction();
         IEnumerator FadeOut()
@@ -28,10 +26,14 @@ public class GunAltar : MonoBehaviour
         image.color = Color.black;
         AudioManager.Instance.triggerAudio(AudioManager.AudioTypes.GlassBreaking);
         GameManager.Instance.player.GetComponent<PlayerMovement>().DisableMovement();
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         GameManager.Instance.player.GetComponent<GunController>().EnableGun();
         GameManager.Instance.player.GetComponent<PlayerMovement>().EnableMovement();
-        globalLight.intensity = 0.2f;
+        AudioManager.Instance.triggerAudio(AudioManager.AudioTypes.AlarmFadeIn);
+        yield return new WaitForSeconds(3.3f);
+        AudioManager.Instance.stopAudio(AudioManager.AudioTypes.AlarmFadeIn);
+        AudioManager.Instance.triggerAudio(AudioManager.AudioTypes.AlarmContinous, true);
+        
         StartCoroutine(FadeOut());
     }
     void OnTriggerEnter2D(Collider2D other){

@@ -17,6 +17,9 @@ public class AudioManager : MonoBehaviour
         GunTake,
         DoorOpen,
         DoorClose,
+        AlarmFadeIn,
+        AlarmContinous,
+        PowerboxBoom,
     }
 
     public static AudioManager Instance {
