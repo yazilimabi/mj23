@@ -3,7 +3,7 @@ using DG.Tweening;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] Rigidbody2D _rigidbody;
+    public Rigidbody2D _rigidbody;
     [SerializeField] float walkSpeed = 1f;
     [SerializeField] float rollMultiplier = 1.5f;
     [SerializeField] float rollInvincibilityTime = 0.5f;
@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
     }
     
     void FixedUpdate(){
-        animator.SetBool("Walking", _rigidbody.velocity.magnitude > 0.1);
+        animator.SetBool("Walking", _rigidbody.velocity.magnitude > 0.1 && ableToWalk);
         if(_rigidbody.velocity.x < -0.1){
             spriteRenderer.flipX = true;
         } else if(_rigidbody.velocity.x > 0.1){

@@ -6,6 +6,11 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] float enemyDamage = 50f;
     [SerializeField] float playerDamage = 50f;
+    Rigidbody2D _rigidbody;
+
+    void Start(){
+        _rigidbody = GetComponent<Rigidbody2D>();
+    }
 
     void OnCollisionEnter2D(Collision2D col){
         if(!col.gameObject.CompareTag("Player")){
@@ -15,7 +20,7 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col){
         if(col.CompareTag("Player") && !GameManager.Instance.player.GetComponent<PlayerMovement>().isInvincible()){
-            col.transform.parent.GetComponent<PlayerHealth>().Damage(playerDamage);
+            col.transform.parent.GetComponent<PlayerHealth>().Damage(playerDamage, _rigidbody.velocity);
             Destroy(gameObject);
         } else if (col.CompareTag("Enemy")) {
             var enemy = col.transform.parent;

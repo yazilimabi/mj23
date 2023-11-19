@@ -10,6 +10,8 @@ public class GunAltar : MonoBehaviour
     [SerializeField] bool tookGun = false;
     [SerializeField] PowerBox powerBox;
     [SerializeField] TextActivator text;
+    [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] Sprite brokenSprite;
 
     private YieldInstruction fadeInstruction = new YieldInstruction();
         IEnumerator FadeOut()
@@ -38,6 +40,10 @@ public class GunAltar : MonoBehaviour
         yield return new WaitForSeconds(3.3f);
         AudioManager.Instance.stopAudio(AudioManager.AudioTypes.AlarmFadeIn);
         AudioManager.Instance.triggerAudio(AudioManager.AudioTypes.AlarmContinous, true);
+
+        MusicManager.Instance.StopMusic();
+
+        spriteRenderer.sprite = brokenSprite;
         
         StartCoroutine(FadeOut());
     }

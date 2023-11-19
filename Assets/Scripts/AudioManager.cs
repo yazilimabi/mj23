@@ -20,6 +20,7 @@ public class AudioManager : MonoBehaviour
         AlarmFadeIn,
         AlarmContinous,
         PowerboxBoom,
+        Button,
     }
 
     public static AudioManager Instance {

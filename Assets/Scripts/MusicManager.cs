@@ -16,6 +16,7 @@ public class MusicManager : MonoBehaviour
         Ambient,
         Chill,
         Fast,
+        Null
     }
 
     IEnumerator FadeMusic(Musics music, float duration, float targetVolume){
@@ -67,5 +68,10 @@ public class MusicManager : MonoBehaviour
         StartCoroutine(ChangeMusic(currentMusic, newMusic));
 
         currentMusic = newMusic;
+    }
+
+    public void StopMusic() {
+        m_sources[(int)currentMusic].Stop();
+        currentMusic = Musics.Null;
     }
 }

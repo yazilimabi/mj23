@@ -56,6 +56,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Door
+    uniqueID: 913700765
+    locked: 0
   - name: Entities
     uniqueID: 4010780771
     locked: 0
