@@ -13,6 +13,7 @@ public class Boss : MonoBehaviour
     }
 
     [SerializeField] float speed = 3f;
+    [SerializeField] float rushSpeed = 6f;
     [SerializeField] float changePhaseTime = 4f;
     [SerializeField] float changeFromRush = 1f;
     [SerializeField] int maxMatadors = 3;
@@ -46,10 +47,14 @@ public class Boss : MonoBehaviour
         switch (phase)
         {
             case Phase.Follow:
+                if (Vector2.Distance(rb.position, player.transform.position) < 10) {
+                    SetPhase(Phase.Rush);
+                    return;
+                }
                 rb.MovePosition(Vector2.MoveTowards(rb.position, player.transform.position, speed * Time.fixedDeltaTime));
                 break;
             case Phase.Rush:
-                rb.velocity = savedVelocity * speed;
+                rb.velocity = savedVelocity * rushSpeed;
                 break;
             default: break;
         }

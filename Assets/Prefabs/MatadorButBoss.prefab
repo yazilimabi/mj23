@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8838057703036966260}
   - component: {fileID: 7429672121331953630}
   - component: {fileID: 9099204403882951389}
+  - component: {fileID: 4080958011038022868}
   m_Layer: 10
   m_Name: MatadorButBoss
   m_TagString: Untagged
@@ -138,10 +139,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 2014921355, guid: 564083cd24d107644858f77b4a3392a4, type: 3}
+  m_SortingLayerID: -284186525
+  m_SortingLayer: 2
+  m_SortingOrder: -1
+  m_Sprite: {fileID: -875352257, guid: 73f45ee726afda44aa25e9cf684f594b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -172,6 +173,8 @@ MonoBehaviour:
   runTime: 1
   rotateTime: 0.4
   light2D: {fileID: 0}
+  animator: {fileID: 4080958011038022868}
+  spriteRenderer: {fileID: 8838057703036966260}
 --- !u!114 &9099204403882951389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,6 +203,27 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   maxHealth: 100
+--- !u!95 &4080958011038022868
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2428842789420124194}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6310932b5b5b0f7f294d0742f04601fa, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4186312055596037693
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,5 +397,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   matador: {fileID: 7429672121331953630}
   light2D: {fileID: 0}
-  maxRadius: 30
-  minRadius: 30
+  maxRadius: 100
+  minRadius: 100
