@@ -37,6 +37,8 @@ public class PowerBox : PowerGenerator
             disableLever.SetState(false);
             activateLever.SetState(true);
             extraVoid.SetActive(true);
+
+            GameManager.Instance.IsPowerOn = true;
         }
     }
 }
