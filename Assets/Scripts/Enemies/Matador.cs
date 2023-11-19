@@ -193,7 +193,7 @@ public class Matador : MonoBehaviour
     }
 
     public bool Active() {
-        return active || state != State.Disabled;
+        return active;
     }
 
 
