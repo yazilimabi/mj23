@@ -8,6 +8,7 @@ public class PowerBox : PowerGenerator
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Light2D globalLight;
     [SerializeField] PowerGenerator lever;
+    [SerializeField] GameObject extraVoid;
     public override void UpdateState(){
         
     }
@@ -20,6 +21,7 @@ public class PowerBox : PowerGenerator
         SetState(true);
         globalLight.intensity = 0.2f;
 
-        lever.enabled = false;
+        lever.SetState(false);
+        extraVoid.SetActive(true);
     }
 }
