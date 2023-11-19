@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 
 public class Matador : MonoBehaviour
 {
@@ -62,6 +63,7 @@ public class Matador : MonoBehaviour
 
     void Start()
     {
+        if (SceneManager.GetActiveScene().name == "Menu") return;
         player = GameObject.FindWithTag("Player").transform.parent.gameObject;
         if (!GameManager.Instance.IsSecurityBreached) Disable();
     }
@@ -79,9 +81,11 @@ public class Matador : MonoBehaviour
     }
 
     void Update() {
-        if (!active && GameManager.Instance.IsSecurityBreached) {
-            active = true;
-            Enable();
+        if (SceneManager.GetActiveScene().name != "Menu") {
+            if (!active && GameManager.Instance.IsSecurityBreached) {
+                active = true;
+                Enable();
+            }
         }
 
         switch (state)
@@ -185,7 +189,7 @@ public class Matador : MonoBehaviour
     }
 
     public bool Active() {
-        return active;
+        return active || state != State.Disabled;
     }
 
 

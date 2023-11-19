@@ -160,7 +160,7 @@ public class Guppy : MonoBehaviour
     }
 
     public bool Active() {
-        return active;
+        return active || state != State.Disabled;
     }
 
     public void OnDeath() {
