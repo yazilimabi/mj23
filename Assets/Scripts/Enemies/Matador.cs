@@ -140,13 +140,17 @@ public class Matador : MonoBehaviour
     }
 
     public void OnPlayerEnter() {
+        if (state == State.Disabled) return;
         LookForPlayer();
+        light2D.color = Color.red;
     }
 
     public void OnPlayerExit() {
+        if (state == State.Disabled) return;
         runTimer = runTime;
         rotateTimer = rotateTime;
         state = State.FollowPath;
+        light2D.color = Color.green;
     }
 
     public void Disable() {

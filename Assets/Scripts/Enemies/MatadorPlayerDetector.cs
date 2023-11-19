@@ -28,7 +28,6 @@ public class MatadorPlayerDetector : MonoBehaviour
             if (state == Matador.State.Disabled) return;
             matador.OnPlayerEnter();
             cc.radius = maxRadius;
-            light2D.color = Color.red;
         }
     }
     void OnTriggerExit2D(Collider2D col){
@@ -39,7 +38,6 @@ public class MatadorPlayerDetector : MonoBehaviour
             if (state == Matador.State.Disabled) return;
             matador.OnPlayerExit();
             cc.radius = minRadius;
-            light2D.color = Color.green;
         }
     }
 

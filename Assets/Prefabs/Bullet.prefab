@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5bf907a95d72c6468214955119d8a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyDamage: 100
+  playerDamage: 50
 --- !u!50 &5929845045895308482
 Rigidbody2D:
   serializedVersion: 4

@@ -18,7 +18,15 @@ public class Bullet : MonoBehaviour
             col.transform.parent.GetComponent<PlayerHealth>().Damage(playerDamage);
             Destroy(gameObject);
         } else if (col.CompareTag("Enemy")) {
-            col.transform.parent.GetComponent<EnemyHealth>().Damage(enemyDamage);
+            var enemy = col.transform.parent;
+            enemy.GetComponent<EnemyHealth>().Damage(enemyDamage);
+            var possibleGuppy = enemy.GetComponent<Guppy>();
+            var possibleMatador = enemy.GetComponent<Matador>();
+            if (possibleGuppy) {
+                possibleGuppy.OnPlayerEnter();
+            } else if (possibleMatador) {
+                possibleMatador.OnPlayerEnter();
+            }
             Destroy(gameObject);
         }
         else if(col.CompareTag("Lever")){

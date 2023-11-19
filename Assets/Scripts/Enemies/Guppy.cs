@@ -118,16 +118,20 @@ public class Guppy : MonoBehaviour
     }
 
     public void OnPlayerEnter() {
+        if (state == State.Disabled) return;
         state = State.Shoot;
         Vector2 diff = player.transform.position - hand.transform.position;
         hand.MoveRotation(Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg - 90);
+        light2D.color = Color.red;
     }
 
     public void OnPlayerExit() {
+        if (state == State.Disabled) return;
         shootTimer = shootDelay * 2;
         state = State.FollowPath;
         Vector2 diff = new Vector3(currentTarget.x, currentTarget.y) - transform.position;
         hand.DORotate(Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg - 90, 1f);
+        light2D.color = Color.green;
     }
 
     public void Disable() {

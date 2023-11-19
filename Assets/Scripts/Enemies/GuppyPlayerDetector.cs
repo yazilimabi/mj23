@@ -28,7 +28,6 @@ public class GuppyPlayerDetector : MonoBehaviour
             if (state == Guppy.State.Disabled) return;
             guppy.OnPlayerEnter();
             cc.radius = maxRadius;
-            light2D.color = Color.red;
         }
     }
     void OnTriggerExit2D(Collider2D col){
@@ -39,7 +38,6 @@ public class GuppyPlayerDetector : MonoBehaviour
             if (state == Guppy.State.Disabled) return;
             guppy.OnPlayerExit();
             cc.radius = minRadius;
-            light2D.color = Color.green;
         }
     }
 
