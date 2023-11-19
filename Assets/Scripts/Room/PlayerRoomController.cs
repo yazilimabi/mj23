@@ -21,6 +21,7 @@ public class PlayerRoomController : MonoBehaviour
             if(activeRooms.Count > 1){
                 playerMovement.DisableMovement(true);
             }
+            MusicManager.Instance.PlayMusic(room.music);
         }
     }
 

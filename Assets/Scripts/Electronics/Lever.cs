@@ -1,17 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Lever : PowerGenerator
 {
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] float interactTimer = 0.75f;
+    [SerializeField] Sprite turnedOn,turnedOff;
+    [SerializeField] Light2D light2d;
     float timer = 0f;
     public override void UpdateState(){
         if(state){
-            spriteRenderer.color = Color.green;
+            spriteRenderer.sprite = turnedOn;
+            light2d.color = Color.green;
         }else{
-            spriteRenderer.color = Color.red;
+            spriteRenderer.sprite = turnedOff;
+            light2d.color = Color.red;
         }
     }
 

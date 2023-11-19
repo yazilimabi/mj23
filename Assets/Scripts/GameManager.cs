@@ -15,4 +15,7 @@ public class GameManager : MonoBehaviour
     }
 
     public GameObject player;
+    public bool IsGunEquipped = false;
+    public bool IsPowerOn = false;
+    public bool IsSecurityBreached = false;
 }

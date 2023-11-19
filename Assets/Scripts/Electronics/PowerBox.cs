@@ -12,6 +12,7 @@ public class PowerBox : PowerGenerator
     }
     
     public void Explode(){
+        if(state) return;
         AudioManager.Instance.stopAudio(AudioManager.AudioTypes.AlarmFadeIn);
         AudioManager.Instance.stopAudio(AudioManager.AudioTypes.AlarmContinous);
         AudioManager.Instance.triggerAudio(AudioManager.AudioTypes.PowerboxBoom);

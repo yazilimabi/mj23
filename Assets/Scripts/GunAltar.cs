@@ -7,6 +7,8 @@ public class GunAltar : MonoBehaviour
 {
     [SerializeField] Image image;
     [SerializeField] float fadeTime = 2f;
+    [SerializeField] bool tookGun = false;
+    [SerializeField] PowerBox powerBox;
 
     private YieldInstruction fadeInstruction = new YieldInstruction();
         IEnumerator FadeOut()
@@ -30,6 +32,7 @@ public class GunAltar : MonoBehaviour
         GameManager.Instance.player.GetComponent<GunController>().EnableGun();
         GameManager.Instance.player.GetComponent<PlayerMovement>().EnableMovement();
         AudioManager.Instance.triggerAudio(AudioManager.AudioTypes.AlarmFadeIn);
+        powerBox.SetState(false);
         yield return new WaitForSeconds(3.3f);
         AudioManager.Instance.stopAudio(AudioManager.AudioTypes.AlarmFadeIn);
         AudioManager.Instance.triggerAudio(AudioManager.AudioTypes.AlarmContinous, true);
@@ -37,7 +40,8 @@ public class GunAltar : MonoBehaviour
         StartCoroutine(FadeOut());
     }
     void OnTriggerEnter2D(Collider2D other){
-        if(other.CompareTag("Player")){
+        if(other.CompareTag("Player") && !tookGun){
+            tookGun = true;
             StartCoroutine(Cutscene());
         }
     }

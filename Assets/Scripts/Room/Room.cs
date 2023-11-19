@@ -6,7 +6,7 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     [SerializeField] CinemachineVirtualCamera virtualCamera;
-
+    public MusicManager.Musics music = MusicManager.Musics.Chill;
     public void Start() {
         DisableRoom();
     }

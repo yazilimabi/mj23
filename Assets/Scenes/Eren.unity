@@ -7640,7 +7640,7 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!43 &303483065
+--- !u!43 &322928620
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8122,13 +8122,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door
       objectReference: {fileID: 0}
+    - target: {fileID: 7092461772797717807, guid: 3930f4d8c80ee1e499877148db74d5bf, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 322928620}
+    - target: {fileID: 7092461772797717807, guid: 3930f4d8c80ee1e499877148db74d5bf, type: 3}
+      propertyPath: m_InstanceId
+      value: -279988
+      objectReference: {fileID: 0}
     - target: {fileID: 7227094940265042382, guid: 3930f4d8c80ee1e499877148db74d5bf, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.5
       objectReference: {fileID: 0}
     - target: {fileID: 7227094940265042382, guid: 3930f4d8c80ee1e499877148db74d5bf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.4
+      value: -0.08
       objectReference: {fileID: 0}
     - target: {fileID: 7227094940265042382, guid: 3930f4d8c80ee1e499877148db74d5bf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8161,6 +8169,14 @@ PrefabInstance:
     - target: {fileID: 7227094940265042382, guid: 3930f4d8c80ee1e499877148db74d5bf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7599367815553577303, guid: 3930f4d8c80ee1e499877148db74d5bf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7599367815553577303, guid: 3930f4d8c80ee1e499877148db74d5bf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8237,7 +8253,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6878787200687542387, guid: 27480938fe9ffb10687848ec71d2f6f5, type: 3}
       propertyPath: m_SortingLayer
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8466,6 +8482,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1766476228}
+  IsGunEquipped: 0
+  IsPowerOn: 0
+  IsSecurityBreached: 0
 --- !u!1 &1259823548
 GameObject:
   m_ObjectHideFlags: 0

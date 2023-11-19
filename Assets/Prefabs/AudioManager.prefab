@@ -45,10 +45,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_audios:
-  - {fileID: 8300000, guid: 75840eaaa78c32c44b346f76e2b653d9, type: 3}
-  - {fileID: 8300000, guid: 75840eaaa78c32c44b346f76e2b653d9, type: 3}
-  - {fileID: 8300000, guid: f8a5d06820b171d4b8855a05f8139ef4, type: 3}
+  - {fileID: 8300000, guid: 8a9cbdfc5456bc642a58791e773b65fb, type: 3}
+  - {fileID: 8300000, guid: 4ad05da80ffafdd48b0bdd52ec281b96, type: 3}
+  - {fileID: 8300000, guid: 11504073dc76fc24697656b0e178cf84, type: 3}
   - {fileID: 8300000, guid: 437ca30402109b14c8a17c485f2d1c78, type: 3}
   - {fileID: 8300000, guid: 067388b1a72135e4b85af99113d3ef93, type: 3}
   - {fileID: 8300000, guid: 75840eaaa78c32c44b346f76e2b653d9, type: 3}
+  - {fileID: 8300000, guid: 89832e790501a124f90ab386e9f7ecf2, type: 3}
+  - {fileID: 8300000, guid: aa04a0e7ed1bffd47aeaa58123b2bb3d, type: 3}
+  - {fileID: 8300000, guid: c3ddfb64659cf9a448e93a3400e2f5c4, type: 3}
   m_volume: 0.3
