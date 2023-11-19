@@ -27,6 +27,8 @@ public class Bullet : MonoBehaviour
             } else if (possibleMatador) {
                 if (possibleMatador.Active()) enemy.GetComponent<EnemyHealth>().Damage(enemyDamage);
                 possibleMatador.OnPlayerEnter();
+            } else {
+                enemy.GetComponent<EnemyHealth>().Damage(enemyDamage);
             }
             Destroy(gameObject);
         }

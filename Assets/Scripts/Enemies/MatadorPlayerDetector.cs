@@ -15,6 +15,7 @@ public class MatadorPlayerDetector : MonoBehaviour
     void Start() {
         cc = GetComponent<CircleCollider2D>();
         cc.radius = minRadius;
+        if (!light2D) return;
         light2D.pointLightInnerRadius = minRadius * 0.8f;
         light2D.pointLightOuterRadius = minRadius;
         light2D.color = Color.green;

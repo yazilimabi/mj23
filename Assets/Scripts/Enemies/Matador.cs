@@ -149,6 +149,7 @@ public class Matador : MonoBehaviour
     public void OnPlayerEnter() {
         if (state == State.Disabled) return;
         LookForPlayer();
+        if (!light2D) return;
         light2D.color = Color.red;
     }
 
@@ -157,17 +158,20 @@ public class Matador : MonoBehaviour
         runTimer = runTime;
         rotateTimer = rotateTime;
         state = State.FollowPath;
+        if (!light2D) return;
         light2D.color = Color.green;
     }
 
     public void Disable() {
         rb.velocity = Vector2.zero;
         state = State.Disabled;
+        if (!light2D) return;
         light2D.enabled = false;
     }
 
     public void Enable() {
         state = State.FollowPath;
+        if (!light2D) return;
         light2D.enabled = true;
     }
 
@@ -178,5 +182,9 @@ public class Matador : MonoBehaviour
 
     public void OnDeath() {
         Disable();
+    }
+
+    public void FuckingDie() {
+        Destroy(gameObject);
     }
 }
