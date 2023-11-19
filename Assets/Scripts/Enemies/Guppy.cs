@@ -35,10 +35,7 @@ public class Guppy : MonoBehaviour
     Rigidbody2D rb;
     bool active = false;
 
-    void Start()
-    {
-        player = GameObject.FindWithTag("Player").transform.parent.gameObject;
-
+    void Awake() {
         shootTimer = shootDelay * 2;
 
         rb = GetComponent<Rigidbody2D>();
@@ -59,7 +56,11 @@ public class Guppy : MonoBehaviour
         if (path.Length >= 1) {
             transform.position = currentTarget;
         }
+    }
 
+    void Start()
+    {
+        player = GameObject.FindWithTag("Player").transform.parent.gameObject;
         if (!GameManager.Instance.IsSecurityBreached) Disable();
     }
 
@@ -120,6 +121,10 @@ public class Guppy : MonoBehaviour
     void Shoot() {
         var bullet = Instantiate(bulletPrefab, nozzle.position, hand.transform.rotation);
         bullet.GetComponent<Rigidbody2D>().AddForce(nozzle.up * fireForce, ForceMode2D.Impulse);
+    }
+
+    void OnEnable() {
+        transform.position = currentTarget;
     }
 
     public State GetState() {
