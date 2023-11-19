@@ -23,6 +23,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if(TextBoxManager.Instance.IsTextActive){
+            _direction = Vector2.zero;
+            return;
+        }
+
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         _direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
 

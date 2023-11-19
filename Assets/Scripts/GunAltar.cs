@@ -9,6 +9,7 @@ public class GunAltar : MonoBehaviour
     [SerializeField] float fadeTime = 2f;
     [SerializeField] bool tookGun = false;
     [SerializeField] PowerBox powerBox;
+    [SerializeField] TextActivator text;
 
     private YieldInstruction fadeInstruction = new YieldInstruction();
         IEnumerator FadeOut()
@@ -32,6 +33,7 @@ public class GunAltar : MonoBehaviour
         GameManager.Instance.player.GetComponent<GunController>().EnableGun();
         GameManager.Instance.player.GetComponent<PlayerMovement>().EnableMovement();
         AudioManager.Instance.triggerAudio(AudioManager.AudioTypes.AlarmFadeIn);
+        text.TurnOn();
         powerBox.SetState(false);
         yield return new WaitForSeconds(3.3f);
         AudioManager.Instance.stopAudio(AudioManager.AudioTypes.AlarmFadeIn);

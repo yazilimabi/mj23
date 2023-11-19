@@ -22,6 +22,14 @@ public class PowerBox : PowerGenerator
         SetState(true);
         globalLight.intensity = 0.2f;
 
+        var rooms = GameObject.FindGameObjectsWithTag("Room");
+
+        foreach (GameObject room in rooms)
+        {
+            room.GetComponent<Room>().music = MusicManager.Musics.Ambient;
+        }
+
+        MusicManager.Instance.PlayMusic(MusicManager.Musics.Ambient);
         disableLever.SetState(false);
         activateLever.SetState(true);
         extraVoid.SetActive(true);
