@@ -39,6 +39,8 @@ public class GunController : MonoBehaviour
                 AudioManager.Instance.triggerAudio(0);
                 shaketween = gun.DOShakePosition(gunShootTime, 0.1f, 100, 90, false, false, ShakeRandomnessMode.Full);
                 audioTriggered = true;
+            } else {
+                gun.localPosition = new Vector2(0, 0.8f);
             }
 
             if(gunShootTimer < 0){
