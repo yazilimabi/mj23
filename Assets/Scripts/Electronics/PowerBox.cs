@@ -20,10 +20,10 @@ public class PowerBox : PowerGenerator
     public void Explode(){
         if(state) return;
         AudioManager.Instance.triggerAudio(AudioManager.AudioTypes.PowerboxBoom);
+        SetState(true);
         if(!ikinci){
             AudioManager.Instance.stopAudio(AudioManager.AudioTypes.AlarmFadeIn);
             AudioManager.Instance.stopAudio(AudioManager.AudioTypes.AlarmContinous);
-            SetState(true);
             globalLight.intensity = 0.2f;
 
             var rooms = GameObject.FindGameObjectsWithTag("Room");

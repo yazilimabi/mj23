@@ -21,6 +21,8 @@ public class Matador : MonoBehaviour
     [SerializeField] float runTime = 4f;
     [SerializeField] float rotateTime = 1f;
     [SerializeField] Light2D light2D;
+    [SerializeField] Animator animator;
+    [SerializeField] SpriteRenderer spriteRenderer;
 
     GameObject player;
     float runTimer = 0;
@@ -108,6 +110,13 @@ public class Matador : MonoBehaviour
 
     void FixedUpdate()
     {
+        animator.SetBool("Walk", rb.velocity.magnitude > 0.5f);
+        if(rb.velocity.x < -0.1) {
+            spriteRenderer.flipX = false;
+        } else if(rb.velocity.x > 0.1) {
+            spriteRenderer.flipX = true;
+        }
+
         switch (state)
         {
             case State.FollowPath: 
