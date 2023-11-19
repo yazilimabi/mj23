@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Collider2D hitCollider;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Rigidbody2D hand;
-    [SerializeField] Animator animator;
+    public Animator animator;
     
     float rollTimer = 0f;
     float currentRollMultiplier = 0f;

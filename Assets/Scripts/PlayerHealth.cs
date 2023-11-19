@@ -21,6 +21,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void Damage(float damage, Vector2 pushVector) {
         playerMovement.DisableMovement();
+        playerMovement.animator.SetBool("Hit", true);
         playerMovement._rigidbody.velocity = pushVector*1.2f;
 
         StartCoroutine("DamageCoroutine");
@@ -28,6 +29,7 @@ public class PlayerHealth : MonoBehaviour
 
     IEnumerator DamageCoroutine() {
         yield return new WaitForSeconds(0.7f);
+        playerMovement.animator.SetBool("Hit", false);
         playerMovement.EnableMovement();
     }
 }
