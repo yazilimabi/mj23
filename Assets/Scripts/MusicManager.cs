@@ -30,12 +30,13 @@ public class MusicManager : MonoBehaviour
         }
         yield break;
     }
+
     public IEnumerator ChangeMusic(Musics from, Musics to){
-        StartCoroutine(FadeMusic(from, 2f, 0));
-        yield return new WaitForSeconds(2f);
+        StartCoroutine(FadeMusic(from, 1f, 0));
+        yield return new WaitForSeconds(1f);
         m_sources[(int)to].Stop();
         m_sources[(int)to].Play();
-        StartCoroutine(FadeMusic(to, 2f, 0.3f));
+        StartCoroutine(FadeMusic(to, 1f, 0.3f));
     }
 
     public static MusicManager Instance {

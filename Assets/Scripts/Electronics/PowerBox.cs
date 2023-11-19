@@ -7,6 +7,7 @@ public class PowerBox : PowerGenerator
 {
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Light2D globalLight;
+    [SerializeField] PowerGenerator lever;
     public override void UpdateState(){
         
     }
@@ -18,5 +19,7 @@ public class PowerBox : PowerGenerator
         AudioManager.Instance.triggerAudio(AudioManager.AudioTypes.PowerboxBoom);
         SetState(true);
         globalLight.intensity = 0.2f;
+
+        lever.enabled = false;
     }
 }
