@@ -172,6 +172,7 @@ MonoBehaviour:
   runSpeed: 6
   runTime: 1
   rotateTime: 0.4
+  light2D: {fileID: 809177862507930464}
 --- !u!114 &9099204403882951389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,7 +293,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4090184725417211769}
   - component: {fileID: 3781149056741475044}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: HitCollider
   m_TagString: Enemy
   m_Icon: {fileID: 0}

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Guppy : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class Guppy : MonoBehaviour
     [SerializeField] Rigidbody2D hand;
     [SerializeField] float fireForce = 10f;
     [SerializeField] float shootDelay = 0.75f;
+    [SerializeField] Light2D light2D;
 
     [SerializeField] LineRenderer lineRenderer;
     [SerializeField] int startingIndex = 0;
@@ -131,6 +133,7 @@ public class Guppy : MonoBehaviour
     public void Disable() {
         rb.velocity = Vector2.zero;
         state = State.Disabled;
+        light2D.enabled = false;
     }
 
     public void OnDeath() {

@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 249016496398181482}
   - component: {fileID: 6878231267622940784}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: HitCollider
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -484,6 +484,7 @@ MonoBehaviour:
   hand: {fileID: 8189723245716299031}
   fireForce: 10
   shootDelay: 0.75
+  light2D: {fileID: 1155887965627772109}
   lineRenderer: {fileID: 0}
   startingIndex: 0
   loopForPath: 1

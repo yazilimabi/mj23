@@ -15,7 +15,6 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col){
         if(col.CompareTag("Player") && !GameManager.Instance.player.GetComponent<PlayerMovement>().isInvincible()){
-            Debug.Log(col.transform.parent.name);
             col.transform.parent.GetComponent<PlayerHealth>().Damage(playerDamage);
             Destroy(gameObject);
         } else if (col.CompareTag("Enemy")) {

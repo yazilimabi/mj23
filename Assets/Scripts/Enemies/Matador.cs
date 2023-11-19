@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Matador : MonoBehaviour
 {
@@ -19,7 +20,8 @@ public class Matador : MonoBehaviour
     [SerializeField] float runSpeed = 5f;
     [SerializeField] float runTime = 4f;
     [SerializeField] float rotateTime = 1f;
-    
+    [SerializeField] Light2D light2D;
+
     GameObject player;
     float runTimer = 0;
     float rotateTimer = 0;
@@ -150,10 +152,10 @@ public class Matador : MonoBehaviour
     public void Disable() {
         rb.velocity = Vector2.zero;
         state = State.Disabled;
+        light2D.enabled = false;
     }
 
     public void OnDeath() {
-        Debug.Log("aaa");
         Disable();
     }
 }
