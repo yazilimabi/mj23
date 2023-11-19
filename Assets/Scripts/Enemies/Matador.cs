@@ -35,6 +35,7 @@ public class Matador : MonoBehaviour
     Rigidbody2D rb;
     Vector2 savedVelocity = Vector2.zero;
     bool active = false;
+    Vector2 startTarget;
 
     void Awake() {
         runTimer = runTime;
@@ -44,6 +45,7 @@ public class Matador : MonoBehaviour
 
         if (lineRenderer == null) {
             currentTarget = transform.position;
+            startTarget = currentTarget;
             return;
         }
 
@@ -59,6 +61,8 @@ public class Matador : MonoBehaviour
         if (path.Length >= 1) {
             transform.position = currentTarget;
         }
+
+        startTarget = currentTarget;
     }
 
     void Start()
@@ -140,7 +144,7 @@ public class Matador : MonoBehaviour
 
 
     void OnEnable() {
-        transform.position = currentTarget;
+        transform.position = startTarget;
     }
 
     void LookForPlayer() {

@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class Elevator : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    [SerializeField] PowerGenerator powerGenerator;
+    [SerializeField] GameObject guvenlikMesaji;
+
+    void Update() {
+        if(powerGenerator.state){
+            guvenlikMesaji.SetActive(false);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void OnTriggerEnter2D(Collider2D col){
+        if(powerGenerator.state)
+            if(col.CompareTag("Player")){
+                col.GetComponent<PlayerMovement>().DisableMovement();
+            }
     }
 }
