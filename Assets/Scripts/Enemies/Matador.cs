@@ -31,6 +31,7 @@ public class Matador : MonoBehaviour
     Vector2[] path;
     Rigidbody2D rb;
     Vector2 savedVelocity = Vector2.zero;
+    bool active = false;
 
     void Awake() {
         runTimer = runTime;
@@ -60,6 +61,7 @@ public class Matador : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player").transform.parent.gameObject;
+        if (!GameManager.Instance.IsSecurityBreached) Disable();
     }
 
     void NextTarget() {
@@ -75,6 +77,11 @@ public class Matador : MonoBehaviour
     }
 
     void Update() {
+        if (!active && GameManager.Instance.IsSecurityBreached) {
+            active = true;
+            Enable();
+        }
+
         switch (state)
         {
             case State.FollowPath: 
@@ -158,6 +165,16 @@ public class Matador : MonoBehaviour
         state = State.Disabled;
         light2D.enabled = false;
     }
+
+    public void Enable() {
+        state = State.FollowPath;
+        light2D.enabled = true;
+    }
+
+    public bool Active() {
+        return active;
+    }
+
 
     public void OnDeath() {
         Disable();

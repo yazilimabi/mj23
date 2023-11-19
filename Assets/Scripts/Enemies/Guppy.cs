@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -32,6 +33,7 @@ public class Guppy : MonoBehaviour
     int currentIndex = 0;
     Vector2[] path;
     Rigidbody2D rb;
+    bool active = false;
 
     void Start()
     {
@@ -57,6 +59,8 @@ public class Guppy : MonoBehaviour
         if (path.Length >= 1) {
             transform.position = currentTarget;
         }
+
+        if (!GameManager.Instance.IsSecurityBreached) Disable();
     }
 
     void NextTarget() {
@@ -74,6 +78,11 @@ public class Guppy : MonoBehaviour
     }
 
     void Update() {
+        if (!active && GameManager.Instance.IsSecurityBreached) {
+            active = true;
+            Enable();
+        }
+
         switch (state)
         {
             case State.FollowPath: 
@@ -140,8 +149,16 @@ public class Guppy : MonoBehaviour
         light2D.enabled = false;
     }
 
+    public void Enable() {
+        state = State.FollowPath;
+        light2D.enabled = true;
+    }
+
+    public bool Active() {
+        return active;
+    }
+
     public void OnDeath() {
-        Debug.Log("aaa");
         Disable();
     }
 }
