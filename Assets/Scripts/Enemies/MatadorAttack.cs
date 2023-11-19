@@ -12,6 +12,7 @@ public class MatadorAttack : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D col) {
+        if (!transform.parent.GetComponent<Matador>().Active()) return;
         if(col.CompareTag("Player") && !GameManager.Instance.player.GetComponent<PlayerMovement>().isInvincible()) {
             col.transform.parent.GetComponent<PlayerHealth>().Damage(damageToPlayer, _rigidbody.velocity);
         }
