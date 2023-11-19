@@ -332,7 +332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 5554385395212128576}
-  walkSpeed: 8
+  walkSpeed: 6
   rollMultiplier: 2
   rollInvincibilityTime: 0.4
   ableToWalk: 1
