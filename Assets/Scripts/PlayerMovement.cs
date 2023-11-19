@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
 
         _rigidbody.velocity = _direction * walkSpeed;
 
-        Vector2 aimDirection = mousePosition - _rigidbody.position;
+        Vector2 aimDirection = mousePosition - hand.position;
         float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
 
         hand.transform.rotation = Quaternion.Euler(0,0,aimAngle);
